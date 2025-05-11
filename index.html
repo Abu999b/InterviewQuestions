@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tech Placement Preparation</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
@@ -16,14 +16,10 @@
             font-family: 'Poppins', sans-serif;
             background: linear-gradient(135deg, #1f4037, #99f2c8);
             color: #222;
-            overflow: hidden;
-            height: 600px;
-            max-width: 350px;
-            margin-left: auto;
-            margin-right: auto;
-            padding: 16px 20px;
+            padding: 20px;
             display: flex;
             flex-direction: column;
+            align-items: center;
         }
 
         h1 {
@@ -37,34 +33,25 @@
         }
 
         .content-container {
-            flex: 1;
-            overflow-y: auto;
-            padding-right: 12px;
-            scrollbar-width: thin;
-            scrollbar-color: #4caf50 #dfffe2;
-        }
-
-        .content-container::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        .content-container::-webkit-scrollbar-track {
-            background: #dfffe2;
-            border-radius: 3px;
-        }
-
-        .content-container::-webkit-scrollbar-thumb {
-            background-color: #4caf50;
-            border-radius: 3px;
+            width: 100%;
+            max-width: 1200px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 20px;
+            padding: 10px;
         }
 
         section {
             background: #e9f7efcc;
             border-radius: 12px;
-            margin-bottom: 18px;
             box-shadow: 1px 2px 12px rgba(0,0,0,0.12);
             transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            min-height: 180px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
+
         section:hover {
             background-color: #d4eddbcc;
             box-shadow: 2px 4px 20px rgba(0,0,0,0.18);
@@ -75,11 +62,9 @@
             padding: 18px 22px;
             text-decoration: none;
             color: #2e7d32;
-            cursor: pointer;
-            user-select: none;
-            border-radius: 12px;
-            transition: color 0.3s ease;
+            height: 100%;
         }
+
         a.section-link:hover,
         a.section-link:focus {
             color: #1b4d20;
@@ -97,7 +82,6 @@
             font-weight: 500;
             color: #4caf50;
             margin-bottom: 10px;
-            user-select: none;
         }
 
         .description {
@@ -107,22 +91,21 @@
             margin: 0;
         }
 
-        @media (max-width: 350px) {
-            body {
-                padding: 12px 15px;
-            }
+        @media (max-width: 768px) {
             h1 {
                 font-size: 1.75rem;
-                margin-bottom: 20px;
             }
             h2 {
                 font-size: 1.2rem;
             }
-            .subtitle {
-                font-size: 0.8rem;
-            }
             .description {
-                font-size: 0.88rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .content-container {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -130,104 +113,20 @@
 <body>
     <h1>Tech Placement Preparation</h1>
     <div class="content-container" role="main">
-        <section>
-            <a href="computer_networks.html" class="section-link" tabindex="0" aria-label="Computer Networks interview questions">
-                <h2>Computer Networks</h2>
-                <div class="subtitle">Click for interview questions</div>
-                <p class="description">Learn concepts such as network types, OSI and TCP/IP models, IP addressing, subnetting, routing, and security principles.</p>
-            </a>
-        </section>
-        <section>
-            <a href="oops.html" class="section-link" tabindex="0" aria-label="Object-Oriented Programming interview questions">
-                <h2>Object-Oriented Programming (OOPS)</h2>
-                <div class="subtitle">Click for interview questions</div>
-                <p class="description">Understand the core principles like classes, objects, inheritance, polymorphism, abstraction, and encapsulation.</p>
-            </a>
-        </section>
-        <section>
-            <a href="operating_systems.html" class="section-link" tabindex="0" aria-label="Operating Systems interview questions">
-                <h2>Operating Systems (OS)</h2>
-                <div class="subtitle">Click for interview questions</div>
-                <p class="description">Explore process management, threading, memory management, file systems, and OS scheduling algorithms.</p>
-            </a>
-        </section>
-        <section>
-            <a href="dbms.html" class="section-link" tabindex="0" aria-label="Database Management Systems interview questions">
-                <h2>Database Management Systems (DBMS)</h2>
-                <div class="subtitle">Click for interview questions</div>
-                <p class="description">Learn about relational databases, normalization, SQL queries, ACID properties, and database design concepts.</p>
-            </a>
-        </section>
-        <section>
-            <a href="java.html" class="section-link" tabindex="0" aria-label="Java interview questions">
-                <h2>Java</h2>
-                <div class="subtitle">Click for interview questions</div>
-                <p class="description">Basic to advanced Java concepts including JVM, OOP, exceptions, collections, multithreading, and Java 8 features.</p>
-            </a>
-        </section>
-        <section>
-            <a href="javascript.html" class="section-link" tabindex="0" aria-label="JavaScript interview questions">
-                <h2>JavaScript</h2>
-                <div class="subtitle">Click for interview questions</div>
-                <p class="description">Core JavaScript, ES6 features, asynchronous programming, DOM manipulation, and common interview questions.</p>
-            </a>
-        </section>
-        <section>
-            <a href="mongodb.html" class="section-link" tabindex="0" aria-label="MongoDB interview questions">
-                <h2>MongoDB</h2>
-                <div class="subtitle">Click for interview questions</div>
-                <p class="description">Get familiar with NoSQL concepts, collections, documents, aggregation, indexing, and transactions in MongoDB.</p>
-            </a>
-        </section>
-        <section>
-            <a href="express.html" class="section-link" tabindex="0" aria-label="Express interview questions">
-                <h2>Express</h2>
-                <div class="subtitle">Click for interview questions</div>
-                <p class="description">Learn the Express framework fundamentals, routing, middleware, error handling, and building RESTful APIs.</p>
-            </a>
-        </section>
-        <section>
-            <a href="react.html" class="section-link" tabindex="0" aria-label="React interview questions">
-                <h2>React</h2>
-                <div class="subtitle">Click for interview questions</div>
-                <p class="description">Understand React components, JSX, hooks, state management, lifecycle methods, and routing.</p>
-            </a>
-        </section>
-        <section>
-            <a href="nodejs.html" class="section-link" tabindex="0" aria-label="NodeJS interview questions">
-                <h2>NodeJS</h2>
-                <div class="subtitle">Click for interview questions</div>
-                <p class="description">Node.js runtime, event loop, npm, modules, asynchronous programming, and building backend services.</p>
-            </a>
-        </section>
-        <section>
-            <a href="general_hr.html" class="section-link" tabindex="0" aria-label="General HR interview questions">
-                <h2>General HR Questions</h2>
-                <div class="subtitle">Click for interview questions</div>
-                <p class="description">Prepare answers for common HR interview questions related to strengths, weaknesses, motivation, and goals.</p>
-            </a>
-        </section>
-        <section>
-            <a href="behavioral.html" class="section-link" tabindex="0" aria-label="Behavioural and Situational interview questions">
-                <h2>Behavioural and Situational</h2>
-                <div class="subtitle">Click for interview questions</div>
-                <p class="description">Learn how to handle behavioural and situational interview questions using techniques like the STAR method.</p>
-            </a>
-        </section>
-        <section>
-            <a href="personality.html" class="section-link" tabindex="0" aria-label="Personality interview questions">
-                <h2>Personality</h2>
-                <div class="subtitle">Click for interview questions</div>
-                <p class="description">Discover how personality traits influence interviews and tips to present yourself confidently.</p>
-            </a>
-        </section>
-        <section>
-            <a href="career_oriented.html" class="section-link" tabindex="0" aria-label="Career Oriented interview questions">
-                <h2>Career Oriented</h2>
-                <div class="subtitle">Click for interview questions</div>
-                <p class="description">Focus on aligning your career goals, continuous learning, and professional growth with employer expectations.</p>
-            </a>
-        </section>
+        <section><a href="computer_networks.html" class="section-link"><h2>Computer Networks</h2><div class="subtitle">Click for interview questions</div><p class="description">Learn concepts such as network types, OSI and TCP/IP models, IP addressing, subnetting, routing, and security principles.</p></a></section>
+        <section><a href="oops.html" class="section-link"><h2>Object-Oriented Programming (OOPS)</h2><div class="subtitle">Click for interview questions</div><p class="description">Understand the core principles like classes, objects, inheritance, polymorphism, abstraction, and encapsulation.</p></a></section>
+        <section><a href="operating_systems.html" class="section-link"><h2>Operating Systems (OS)</h2><div class="subtitle">Click for interview questions</div><p class="description">Explore process management, threading, memory management, file systems, and OS scheduling algorithms.</p></a></section>
+        <section><a href="dbms.html" class="section-link"><h2>Database Management Systems (DBMS)</h2><div class="subtitle">Click for interview questions</div><p class="description">Learn about relational databases, normalization, SQL queries, ACID properties, and database design concepts.</p></a></section>
+        <section><a href="java.html" class="section-link"><h2>Java</h2><div class="subtitle">Click for interview questions</div><p class="description">Basic to advanced Java concepts including JVM, OOP, exceptions, collections, multithreading, and Java 8 features.</p></a></section>
+        <section><a href="javascript.html" class="section-link"><h2>JavaScript</h2><div class="subtitle">Click for interview questions</div><p class="description">Core JavaScript, ES6 features, asynchronous programming, DOM manipulation, and common interview questions.</p></a></section>
+        <section><a href="mongodb.html" class="section-link"><h2>MongoDB</h2><div class="subtitle">Click for interview questions</div><p class="description">Get familiar with NoSQL concepts, collections, documents, aggregation, indexing, and transactions in MongoDB.</p></a></section>
+        <section><a href="express.html" class="section-link"><h2>Express</h2><div class="subtitle">Click for interview questions</div><p class="description">Learn the Express framework fundamentals, routing, middleware, error handling, and building RESTful APIs.</p></a></section>
+        <section><a href="react.html" class="section-link"><h2>React</h2><div class="subtitle">Click for interview questions</div><p class="description">Understand React components, JSX, hooks, state management, lifecycle methods, and routing.</p></a></section>
+        <section><a href="nodejs.html" class="section-link"><h2>NodeJS</h2><div class="subtitle">Click for interview questions</div><p class="description">Node.js runtime, event loop, npm, modules, asynchronous programming, and building backend services.</p></a></section>
+        <section><a href="general_hr.html" class="section-link"><h2>General HR Questions</h2><div class="subtitle">Click for interview questions</div><p class="description">Prepare answers for common HR interview questions related to strengths, weaknesses, motivation, and goals.</p></a></section>
+        <section><a href="behavioral.html" class="section-link"><h2>Behavioural and Situational</h2><div class="subtitle">Click for interview questions</div><p class="description">Learn how to handle behavioural and situational interview questions using techniques like the STAR method.</p></a></section>
+        <section><a href="personality.html" class="section-link"><h2>Personality</h2><div class="subtitle">Click for interview questions</div><p class="description">Discover how personality traits influence interviews and tips to present yourself confidently.</p></a></section>
+        <section><a href="career_oriented.html" class="section-link"><h2>Career Oriented</h2><div class="subtitle">Click for interview questions</div><p class="description">Focus on aligning your career goals, continuous learning, and professional growth with employer expectations.</p></a></section>
     </div>
 </body>
 </html>
