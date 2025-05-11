@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Node.js Interview Questions</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f2f5;
+      color: #333;
+      line-height: 1.6;
+      margin: 0;
+      padding: 20px;
+    }
+
+    section {
+      max-width: 900px;
+      margin: auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 2rem;
+      color: #6cc24a;
+      margin-bottom: 30px;
+    }
+
+    .question {
+      margin-bottom: 20px;
+    }
+
+    .question h3 {
+      margin: 0 0 8px;
+      font-size: 1.1rem;
+      color: #1b5e20;
+    }
+
+    .question p {
+      margin: 0;
+      padding-left: 15px;
+    }
+
+    code {
+      background: #eef;
+      padding: 2px 4px;
+      border-radius: 4px;
+      font-size: 0.95em;
+    }
+  </style>
+</head>
+<body>
+  <section>
+    <h2 tabindex="0">Node.js – 25 Interview Questions</h2>
+
+    <div class="question"><h3>1. What is Node.js?</h3><p>Node.js is a runtime environment that allows executing JavaScript on the server side. It uses the V8 engine and is event-driven and non-blocking.</p></div>
+
+    <div class="question"><h3>2. What is the difference between Node.js and JavaScript?</h3><p>JavaScript is a language; Node.js is a runtime to run JS outside the browser. It provides libraries and modules for backend development.</p></div>
+
+    <div class="question"><h3>3. What is the use of npm?</h3><p>npm is the Node Package Manager used to install libraries and manage dependencies. You use it with commands like <code>npm install</code>.</p></div>
+
+    <div class="question"><h3>4. What is a callback function in Node.js?</h3><p>A callback is a function passed as an argument to another function. It executes after the main function completes, often used in async code.</p></div>
+
+    <div class="question"><h3>5. What are modules in Node.js?</h3><p>Modules are reusable blocks of code. You can import them using <code>require()</code> or <code>import</code>.</p></div>
+
+    <div class="question"><h3>6. What is the difference between require() and import?</h3><p><code>require()</code> is CommonJS and used in older Node versions. <code>import</code> is ES6 and must be used with <code>"type": "module"</code> in <code>package.json</code>.</p></div>
+
+    <div class="question"><h3>7. What is the event loop in Node.js?</h3><p>The event loop handles asynchronous callbacks in Node.js. It allows non-blocking I/O operations.</p></div>
+
+    <div class="question"><h3>8. What is non-blocking I/O in Node.js?</h3><p>Non-blocking I/O allows other operations to run while waiting for I/O. It improves performance and scalability.</p></div>
+
+    <div class="question"><h3>9. What is process in Node.js?</h3><p><code>process</code> is a global object giving info about the current Node process. It can be used for reading environment variables and handling signals.</p></div>
+
+    <div class="question"><h3>10. What is fs module in Node.js?</h3><p>The <code>fs</code> module is used to work with the file system. It allows reading, writing, and deleting files.</p></div>
+
+    <div class="question"><h3>11. What is path module in Node.js?</h3><p>The <code>path</code> module provides utilities to work with file and directory paths. It helps handle cross-platform path issues.</p></div>
+
+    <div class="question"><h3>12. How do you handle errors in Node.js?</h3><p>Use <code>try-catch</code> blocks for sync code and <code>.catch()</code> or error-first callbacks for async code. Good error handling is crucial for stability.</p></div>
+
+    <div class="question"><h3>13. What is middleware in Node.js?</h3><p>Middleware functions process requests before reaching the endpoint. Used often with frameworks like Express.js.</p></div>
+
+    <div class="question"><h3>14. How do you read environment variables in Node.js?</h3><p>Use <code>process.env.VARIABLE_NAME</code>. Store variables in a <code>.env</code> file with the <code>dotenv</code> package.</p></div>
+
+    <div class="question"><h3>15. What is the use of package.json?</h3><p><code>package.json</code> holds metadata about the project and manages dependencies. It’s created with <code>npm init</code>.</p></div>
+
+    <div class="question"><h3>16. What is the difference between synchronous and asynchronous code?</h3><p>Synchronous code runs sequentially and blocks execution. Asynchronous code uses callbacks/promises to run without blocking.</p></div>
+
+    <div class="question"><h3>17. What are streams in Node.js?</h3><p>Streams are used to read/write data in chunks. They improve performance for I/O-heavy operations.</p></div>
+
+    <div class="question"><h3>18. What is a buffer in Node.js?</h3><p>Buffer is used to handle binary data. It’s useful when working with streams or files.</p></div>
+
+    <div class="question"><h3>19. What is the difference between spawn() and exec()?</h3><p>Both run child processes, but <code>exec()</code> buffers output while <code>spawn()</code> streams it. Use <code>spawn()</code> for large outputs.</p></div>
+
+    <div class="question"><h3>20. What is clustering in Node.js?</h3><p>Clustering allows Node to use multiple CPU cores. It improves performance in multi-core systems.</p></div>
+
+    <div class="question"><h3>21. How do you create a server in Node.js?</h3><p>Use the <code>http</code> module and call <code>http.createServer()</code>. Then use <code>listen(port)</code> to start it.</p></div>
+
+    <div class="question"><h3>22. What is the global object in Node.js?</h3><p><code>global</code> is like <code>window</code> in browsers. It provides access to built-in modules and variables.</p></div>
+
+    <div class="question"><h3>23. What is the util module in Node.js?</h3><p><code>util</code> provides utility functions like <code>promisify</code>, <code>inherits</code>, etc. It helps with debugging and converting callbacks to promises.</p></div>
+
+    <div class="question"><h3>24. What is the purpose of setImmediate()?</h3><p><code>setImmediate()</code> schedules a function to run after the current event loop. It runs after I/O events unlike <code>setTimeout()</code>.</p></div>
+
+    <div class="question"><h3>25. What is the difference between process.nextTick() and setImmediate()?</h3><p><code>process.nextTick()</code> runs before any I/O tasks. <code>setImmediate()</code> runs after I/O events in the next iteration of the event loop.</p></div>
+
+  </section>
+</body>
+</html>

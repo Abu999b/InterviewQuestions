@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operating Systems Study Guide</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #f5f5f5;
+        }
+        
+        h1 {
+            background-color: #4285f4;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            margin-top: 0;
+        }
+        
+        .qa-item {
+            background-color: white;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .question {
+            font-weight: bold;
+            color: #4285f4;
+            margin-bottom: 10px;
+        }
+        
+        .answer {
+            margin-left: 15px;
+        }
+        
+        ul {
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Operating Systems Study Guide</h1>
+    
+    <div class="qa-item">
+        <div class="question">1. What is an operating system?</div>
+        <div class="answer">An operating system (OS) is software that manages hardware resources and provides services for computer programs. It acts as an intermediary between users and computer hardware.</div>
+    </div>
+    
+    <div class="qa-item">
+        <div class="question">2. What are the types of operating systems?</div>
+        <div class="answer">
+            <ul>
+                <li><strong>Batch OS:</strong> Executes jobs in batches with no interaction with users.</li>
+                <li><strong>Multitasking OS:</strong> Supports multiple tasks simultaneously (e.g., Windows, Linux).</li>
+                <li><strong>Real-time OS:</strong> Provides immediate processing for real-time applications (e.g., embedded systems).</li>
+                <li><strong>Distributed OS:</strong> Manages multiple independent computers as if they were a single system (e.g., Google's distributed systems).</li>
+                <li><strong>Network OS:</strong> Manages network resources (e.g., Novell NetWare).</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="qa-item">
+        <div class="question">3. What is the difference between a process and a thread?</div>
+        <div class="answer">A process is an independent program in execution, with its own memory space. A thread is a smaller unit of execution within a process, sharing the same memory but having its own execution path.</div>
+    </div>
+    
+    <div class="qa-item">
+        <div class="question">4. What is process scheduling?</div>
+        <div class="answer">Process scheduling is the method by which the OS allocates CPU time to various processes. It involves determining which process runs at any given time.</div>
+    </div>
+    
+    <div class="qa-item">
+        <div class="question">5. What is the difference between preemptive and non-preemptive scheduling?</div>
+        <div class="answer">Preemptive scheduling allows a process to be interrupted and replaced by another, while non-preemptive scheduling ensures that a process runs to completion before another process starts.</div>
+    </div>
+    
+    <div class="qa-item">
+        <div class="question">6. What are the main process scheduling algorithms?</div>
+        <div class="answer">
+            <ul>
+                <li><strong>First-Come, First-Served (FCFS):</strong> Processes are executed in the order they arrive.</li>
+                <li><strong>Shortest Job Next (SJN):</strong> The process with the shortest burst time is executed first.</li>
+                <li><strong>Round Robin (RR):</strong> Processes are executed in fixed time slices.</li>
+                <li><strong>Priority Scheduling:</strong> Processes are executed based on priority.</li>
+                <li><strong>Multilevel Queue:</strong> Processes are grouped into queues based on priority or type.</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="qa-item">
+        <div class="question">7. What is a deadlock?</div>
+        <div class="answer">A deadlock is a situation where two or more processes are blocked forever, waiting for each other to release resources.</div>
+    </div>
+    
+    <div class="qa-item">
+        <div class="question">8. What are the conditions for a deadlock to occur?</div>
+        <div class="answer">
+            The four necessary conditions are:
+            <ul>
+                <li>Mutual Exclusion</li>
+                <li>Hold and Wait</li>
+                <li>No Preemption</li>
+                <li>Circular Wait</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="qa-item">
+        <div class="question">9. What is resource allocation in OS?</div>
+        <div class="answer">Resource allocation involves managing the allocation and deallocation of system resources like CPU, memory, and I/O devices to processes and threads.</div>
+    </div>
+    
+    <div class="qa-item">
+        <div class="question">10. What is memory management?</div>
+        <div class="answer">Memory management is the process of managing the system's memory, which includes allocating memory to processes, tracking memory usage, and freeing memory when it is no longer needed.</div>
+    </div>
+    
+    <!-- Adding 10 more questions to keep it reasonably sized -->
+    
+    <div class="qa-item">
+        <div class="question">11. What is paging in memory management?</div>
+        <div class="answer">Paging divides memory into fixed-size pages, which are then mapped to frames in physical memory. This allows processes to be loaded non-contiguously.</div>
+    </div>
+    
+    <div class="qa-item">
+        <div class="question">12. What is segmentation in memory management?</div>
+        <div class="answer">Segmentation divides memory into segments of variable sizes based on logical divisions (e.g., code, data, stack), making it easier to manage and allocate memory.</div>
+    </div>
+    
+    <div class="qa-item">
+        <div class="question">13. What is virtual memory?</div>
+        <div class="answer">Virtual memory allows the execution of processes that may not be completely loaded into physical memory. It uses disk space as an extension of RAM, swapping data between them.</div>
+    </div>
+    
+    <div class="qa-item">
+        <div class="question">14. What is thrashing?</div>
+        <div class="answer">Thrashing occurs when the OS spends more time swapping data between physical memory and disk than executing processes, resulting in severe performance degradation.</div>
+    </div>
+    
+    <div class="qa-item">
+        <div class="question">15. What is a file system?</div>
+        <div class="answer">A file system organizes and manages files on a storage device, defining how data is stored, retrieved, and manipulated.</div>
+    </div>
+    
+    <div class="qa-item">
+        <div class="question">16. What are the different types of file systems?</div>
+        <div class="answer">
+            <ul>
+                <li><strong>FAT (File Allocation Table):</strong> Simple, older system used in small devices.</li>
+                <li><strong>NTFS (New Technology File System):</strong> Used in Windows with support for security, large file sizes, and file compression.</li>
+                <li><strong>ext4:</strong> A widely used file system in Linux with features like journaling and large file support.</li>
+                <li><strong>HFS+:</strong> Used by macOS for efficient file storage and management.</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="qa-item">
+        <div class="question">17. What is the difference between a file and a directory?</div>
+        <div class="answer">A file is a collection of data stored on a disk, while a directory is a container used to organize and group files and other directories.</div>
+    </div>
+    
+    <div class="qa-item">
+        <div class="question">18. What is file access control?</div>
+        <div class="answer">File access control involves setting permissions on files and directories to determine which users or processes can read, write, or execute the files.</div>
+    </div>
+    
+    <div class="qa-item">
+        <div class="question">19. What are system calls?</div>
+        <div class="answer">System calls are the interface between user programs and the OS, allowing a program to request services like process management, memory allocation, and I/O operations.</div>
+    </div>
+    
+    <div class="qa-item">
+        <div class="question">20. What is the kernel?</div>
+        <div class="answer">The kernel is the core part of the operating system that manages system resources and facilitates communication between hardware and software components.</div>
+    </div>
+    
+    <div class="qa-item">
+        <div class="question">21. What is the difference between a monolithic kernel and a microkernel?</div>
+        <div class="answer">A monolithic kernel has all core services (e.g., file management, device drivers) within the kernel space, while a microkernel provides only basic services and delegates other functions to user space.</div>
+    </div>
+    
+    <div class="qa-item">
+        <div class="question">22. What is a shell in operating systems?</div>
+        <div class="answer">A shell is a command-line interface that allows users to interact with the operating system by entering commands, scripts, or running programs.</div>
+    </div>
+    
+    <div class="qa-item">
+        <div class="question">23. What is a context switch?</div>
+        <div class="answer">A context switch occurs when the CPU switches from executing one process or thread to another, saving the state of the current process and loading the state of the new one.</div>
+    </div>
+    
+    <div class="qa-item">
+        <div class="question">24. What is an interrupt?</div>
+        <div class="answer">An interrupt is a signal to the processor, indicating an event that requires immediate attention, causing the OS to temporarily stop executing the current process and handle the interrupt.</div>
+    </div>
+    
+    <div class="qa-item">
+        <div class="question">25. What are the types of interrupts?</div>
+        <div class="answer">
+            <ul>
+                <li><strong>Hardware Interrupts:</strong> Generated by external devices (e.g., keyboard, mouse).</li>
+                <li><strong>Software Interrupts:</strong> Generated by software instructions (e.g., system calls).</li>
+                <li><strong>Timer Interrupts:</strong> Generated by the timer to allow multitasking.</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="qa-item">
+        <div class="question">26. What is a semaphore in operating systems?</div>
+        <div class="answer">A semaphore is a synchronization primitive used to control access to shared resources by multiple processes in a concurrent system. It can be binary (0 or 1) or counting.</div>
+    </div>
+    
+    <div class="qa-item">
+        <div class="question">27. What is a mutex?</div>
+        <div class="answer">A mutex (mutual exclusion) is a lock used to prevent multiple threads from simultaneously accessing shared resources, ensuring that only one thread can access the resource at a time.</div>
+    </div>
+    
+    <div class="qa-item">
+        <div class="question">28. What is a critical section?</div>
+        <div class="answer">A critical section is a part of a program that accesses shared resources (e.g., variables, data structures) and must not be executed by more than one thread at a time.</div>
+    </div>
+    
+    <div class="qa-item">
+        <div class="question">29. What is process synchronization?</div>
+        <div class="answer">Process synchronization is the coordination of processes to ensure that shared resources are accessed in a controlled manner, preventing conflicts and inconsistencies.</div>
+    </div>
+    
+    <div class="qa-item">
+        <div class="question">30. What are race conditions?</div>
+        <div class="answer">Race conditions occur when two or more processes or threads attempt to change shared data at the same time, leading to unpredictable or incorrect results.</div>
+    </div>
+    
+    <div class="qa-item">
+        <div class="question">31. What is the difference between blocking and non-blocking synchronization?</div>
+        <div class="answer">Blocking synchronization causes a thread to wait until a resource is available, while non-blocking synchronization allows the thread to continue execution even if the resource is not available.</div>
+    </div>
+    
+    <div class="qa-item">
+        <div class="question">32. What is deadlock avoidance?</div>
+        <div class="answer">Deadlock avoidance is a set of techniques used to ensure that deadlock conditions are prevented by analyzing and managing the system's resource allocation.</div>
+    </div>
+    
+    <div class="qa-item">
+        <div class="question">33. What is deadlock detection?</div>
+        <div class="answer">Deadlock detection involves periodically checking for deadlock conditions in the system and taking corrective actions, such as terminating a process or preempting resources.</div>
+    </div>
+    
+    <div class="qa-item">
+        <div class="question">34. What is the Banker's algorithm?</div>
+        <div class="answer">The Banker's algorithm is used in deadlock avoidance to allocate resources to processes safely by checking whether a resource allocation will leave the system in a safe state.</div>
+    </div>
+    
+    <div class="qa-item">
+        <div class="question">35. What is the difference between preemptive and non-preemptive multitasking?</div>
+        <div class="answer">Preemptive multitasking allows the OS to interrupt a running process and assign CPU time to another process. Non-preemptive multitasking allows a process to run until it voluntarily yields control or finishes.</div>
+    </div>
+    
+    <div class="qa-item">
+        <div class="question">36. What is a thread pool?</div>
+        <div class="answer">A thread pool is a collection of pre-created threads that are reused to perform tasks, reducing the overhead of creating and destroying threads for each task.</div>
+    </div>
+    
+    <div class="qa-item">
+        <div class="question">37. What is cooperative multitasking?</div>
+        <div class="answer">Cooperative multitasking is a type of multitasking where processes voluntarily yield control of the CPU. If a process fails to do so, it can monopolize the CPU, potentially causing system instability.</div>
+    </div>
+    
+    <div class="qa-item">
+        <div class="question">38. What is a page fault?</div>
+        <div class="answer">A page fault occurs when a process attempts to access data that is not currently in the main memory, requiring the OS to load the data from disk into memory.</div>
+    </div>
+    
+    <div class="qa-item">
+        <div class="question">39. What is the difference between internal and external fragmentation?</div>
+        <div class="answer">Internal fragmentation occurs when fixed-size memory blocks are allocated but not fully used, wasting space within the block. External fragmentation happens when free memory is scattered in small blocks, preventing large allocations.</div>
+    </div>
+    
+    <div class="qa-item">
+        <div class="question">40. What is a file descriptor?</div>
+        <div class="answer">A file descriptor is a unique identifier used by the OS to manage open files, enabling processes to read, write, or manipulate files.</div>
+    </div>
+    
+    <div class="qa-item">
+        <div class="question">41. What is the difference between hard link and soft link (symbolic link)?</div>
+        <div class="answer">A hard link points directly to a file's data on disk, while a soft link (or symbolic link) is a pointer to the file's name or path, allowing easier linking across directories and file systems.</div>
+    </div>
+    
+    <div class="qa-item">
+        <div class="question">42. What is swapping in memory management?</div>
+        <div class="answer">Swapping is the process of moving a process or part of a process from main memory to secondary storage (e.g., disk) to free up memory, and swapping it back when needed.</div>
+    </div>
+    
+    <div class="qa-item">
+        <div class="question">43. What is the purpose of a buffer in an OS?</div>
+        <div class="answer">A buffer temporarily holds data while it is being transferred between two locations, such as between the CPU and I/O devices, to prevent data loss and smooth data flow.</div>
+    </div>
+    
+    <div class="qa-item">
+        <div class="question">44. What is inter-process communication (IPC)?</div>
+        <div class="answer">IPC refers to mechanisms that allow processes to communicate and synchronize their actions, such as message passing, shared memory, or pipes.</div>
+    </div>
+    
+    <div class="qa-item">
+        <div class="question">45. What is a pipe in operating systems?</div>
+        <div class="answer">A pipe is a mechanism used for communication between processes, allowing one process's output to be sent as input to another process, often used in Unix-like systems.</div>
+    </div>
+    
+    <div class="qa-item">
+        <div class="question">46. What is a shell script?</div>
+        <div class="answer">A shell script is a series of commands written in a scripting language (such as Bash) that can be executed by a shell, automating tasks like file manipulation and process management.</div>
+    </div>
+    
+    <div class="qa-item">
+        <div class="question">47. What is the difference between a physical address and a logical address?</div>
+        <div class="answer">A physical address is the actual location in memory, while a logical address is a virtual address generated by a program that is mapped to a physical address by the memory management unit (MMU).</div>
+    </div>
+    
+    <div class="qa-item">
+        <div class="question">48. What is an I/O device in an operating system?</div>
+        <div class="answer">An I/O device (Input/Output device) is a hardware component that allows data exchange between the computer and the outside world, such as a keyboard, mouse, printer, or disk.</div>
+    </div>
+    
+    <div class="qa-item">
+        <div class="question">49. What is the role of a device driver?</div>
+        <div class="answer">A device driver is software that allows the OS to communicate with hardware devices, translating OS-level commands into specific instructions understood by the hardware.</div>
+    </div>
+    
+    <div class="qa-item">
+        <div class="question">50. What is a time-sharing system?</div>
+        <div class="answer">A time-sharing system allows multiple users or processes to share the system's resources by providing each user/process with a slice of time on the CPU, ensuring efficient resource utilization.</div>
+    </div>
+</body>
+</html>

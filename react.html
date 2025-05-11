@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>React Interview Questions</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f7fa;
+      color: #333;
+      line-height: 1.6;
+      margin: 0;
+      padding: 20px;
+    }
+
+    section {
+      max-width: 900px;
+      margin: auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 30px;
+      color: #61dafb;
+    }
+
+    .question {
+      margin-bottom: 20px;
+    }
+
+    .question h3 {
+      margin: 0 0 8px;
+      font-size: 1.1rem;
+      color: #0d47a1;
+    }
+
+    .question p {
+      margin: 0;
+      padding-left: 15px;
+    }
+
+    code {
+      background: #eef;
+      padding: 2px 4px;
+      border-radius: 4px;
+      font-size: 0.95em;
+    }
+  </style>
+</head>
+<body>
+  <section>
+    <h2 tabindex="0">React – 25 Interview Questions</h2>
+
+    <div class="question"><h3>1. What is React?</h3><p>React is a JavaScript library for building user interfaces, developed by Facebook. It uses a component-based architecture and a virtual DOM.</p></div>
+
+    <div class="question"><h3>2. What is JSX?</h3><p>JSX stands for JavaScript XML. It allows writing HTML-like syntax in JavaScript, which React transforms into <code>React.createElement()</code> calls.</p></div>
+
+    <div class="question"><h3>3. What is the virtual DOM?</h3><p>The virtual DOM is an in-memory representation of the real DOM. React updates it first, then syncs changes with the actual DOM for better performance.</p></div>
+
+    <div class="question"><h3>4. What are components in React?</h3><p>Components are reusable building blocks of a React UI. They can be class-based or functional.</p></div>
+
+    <div class="question"><h3>5. What is the difference between functional and class components?</h3><p>Class components use ES6 classes and have lifecycle methods. Functional components are simpler and can use Hooks for state and side effects.</p></div>
+
+    <div class="question"><h3>6. What are props in React?</h3><p>Props (short for properties) are inputs passed to components. They are read-only and used to customize components.</p></div>
+
+    <div class="question"><h3>7. What is state in React?</h3><p>State represents data that can change over time in a component. It’s managed internally and triggers re-rendering when updated.</p></div>
+
+    <div class="question"><h3>8. How do you update state in React?</h3><p>Use the <code>setState()</code> method in class components or <code>useState</code> hook in functional ones. Direct modification of state is not allowed.</p></div>
+
+    <div class="question"><h3>9. What are React Hooks?</h3><p>Hooks let you use state and lifecycle features in functional components. Common hooks are <code>useState</code>, <code>useEffect</code>, <code>useRef</code>, etc.</p></div>
+
+    <div class="question"><h3>10. What is useEffect in React?</h3><p><code>useEffect</code> performs side effects in functional components. It replaces lifecycle methods like <code>componentDidMount</code>.</p></div>
+
+    <div class="question"><h3>11. What is the difference between useEffect and useLayoutEffect?</h3><p><code>useEffect</code> runs after render; <code>useLayoutEffect</code> runs before painting. <code>useLayoutEffect</code> is useful for DOM measurements.</p></div>
+
+    <div class="question"><h3>12. What is conditional rendering?</h3><p>Conditional rendering shows UI elements based on a condition. It uses JavaScript conditions like <code>if</code>, <code>&&</code>, and ternary (<code>? :</code>).</p></div>
+
+    <div class="question"><h3>13. What is lifting state up in React?</h3><p>Lifting state up moves state to a common ancestor component. It helps share data between sibling components.</p></div>
+
+    <div class="question"><h3>14. What are controlled components?</h3><p>In controlled components, form elements are controlled by React state. They rely on <code>onChange</code> handlers and state variables.</p></div>
+
+    <div class="question"><h3>15. What is React Router?</h3><p>React Router is a library for client-side routing in React apps. It allows navigation without page reloads using components like <code>&lt;Route&gt;</code> and <code>&lt;Link&gt;</code>.</p></div>
+
+    <div class="question"><h3>16. What is the key prop in React lists?</h3><p>The <code>key</code> prop uniquely identifies elements in a list. It helps React optimize rendering by tracking changes.</p></div>
+
+    <div class="question"><h3>17. What is the use of useRef?</h3><p><code>useRef</code> creates a reference to a DOM element or a mutable value. It persists across renders without causing re-renders.</p></div>
+
+    <div class="question"><h3>18. What are fragments in React?</h3><p>Fragments let you group multiple elements without adding extra nodes to the DOM. Syntax: <code>&lt;&gt;&lt;/&gt;</code> or <code>&lt;React.Fragment&gt;</code>.</p></div>
+
+    <div class="question"><h3>19. What is context in React?</h3><p>Context provides a way to pass data through the component tree without props. It uses <code>React.createContext()</code> and <code>useContext()</code>.</p></div>
+
+    <div class="question"><h3>20. What is memoization in React?</h3><p>Memoization avoids re-rendering by caching component outputs. Use <code>React.memo</code> for components and <code>useMemo</code> for functions.</p></div>
+
+    <div class="question"><h3>21. What is React.lazy()?</h3><p><code>React.lazy()</code> enables code-splitting by loading components lazily. It works with <code>Suspense</code> to show fallback content.</p></div>
+
+    <div class="question"><h3>22. What is the purpose of ErrorBoundary?</h3><p>ErrorBoundary catches JavaScript errors in a component tree and displays a fallback UI instead of crashing the whole app.</p></div>
+
+    <div class="question"><h3>23. What is reconciliation in React?</h3><p>Reconciliation is the process of comparing old and new virtual DOM trees. React uses it to update only the changed parts of the real DOM.</p></div>
+
+    <div class="question"><h3>24. What is the purpose of useCallback hook?</h3><p><code>useCallback</code> memoizes functions to prevent unnecessary re-creations. Useful in performance optimization with prop-heavy components.</p></div>
+
+    <div class="question"><h3>25. What are higher-order components (HOC)?</h3><p>An HOC is a function that takes a component and returns a new component. They’re used to reuse component logic.</p></div>
+
+  </section>
+</body>
+</html>

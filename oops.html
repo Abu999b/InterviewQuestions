@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OOP Concepts - 50 Essential Questions</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 25px;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        h1, h2 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e74c3c;
+        }
+        .question {
+            font-weight: bold;
+            margin-top: 25px;
+            color: #c0392b;
+            font-size: 1.1em;
+            background-color: #fdecea;
+            padding: 10px 15px;
+            border-radius: 5px;
+            border-left: 4px solid #e74c3c;
+        }
+        .answer {
+            margin-left: 20px;
+            margin-bottom: 20px;
+            padding: 10px 15px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .emoji {
+            font-size: 1.3em;
+            vertical-align: middle;
+        }
+        ul, ol {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            padding-left: 25px;
+        }
+        li {
+            margin-bottom: 5px;
+        }
+        strong {
+            color: #2c3e50;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+            .question, .answer {
+                margin-left: 0;
+                margin-right: 0;
+            }
+        }
+        .keyword {
+            font-family: 'Courier New', monospace;
+            background-color: #f5f5f5;
+            padding: 2px 4px;
+            border-radius: 3px;
+            color: #c7254e;
+        }
+    </style>
+</head>
+<body>
+    <h1><span class="emoji">📘</span> Object-Oriented Programming – 50 Essential Questions</h1>
+    
+    <div class="question">1. What is Object-Oriented Programming?</div>
+    <div class="answer">OOP is a programming paradigm based on the concept of objects, which can contain data and methods to operate on that data.</div>
+    
+    <div class="question">2. What are the main principles of OOP?</div>
+    <div class="answer">
+        <ul>
+            <li>Encapsulation</li>
+            <li>Abstraction</li>
+            <li>Inheritance</li>
+            <li>Polymorphism</li>
+        </ul>
+    </div>
+    
+    <div class="question">3. What is a class?</div>
+    <div class="answer">A class is a blueprint for creating objects, defining properties and methods that the objects will have.</div>
+    
+    <div class="question">4. What is an object?</div>
+    <div class="answer">An instance of a class that represents a specific entity with defined attributes and behaviors.</div>
+    
+    <div class="question">5. What is encapsulation?</div>
+    <div class="answer">Encapsulation is the concept of bundling data and methods that operate on that data into a single unit (class) and restricting access to some of the object's components.</div>
+    
+    <div class="question">6. What is abstraction?</div>
+    <div class="answer">Abstraction hides complex implementation details and shows only the essential features of an object, simplifying interactions.</div>
+    
+    <div class="question">7. What is inheritance?</div>
+    <div class="answer">Inheritance allows a class to inherit properties and behaviors (methods) from another class, promoting code reuse.</div>
+    
+    <div class="question">8. What is polymorphism?</div>
+    <div class="answer">Polymorphism allows objects of different classes to be treated as objects of a common superclass, enabling method overriding and overloading.</div>
+    
+    <div class="question">9. What is method overloading?</div>
+    <div class="answer">Method overloading occurs when two or more methods in the same class have the same name but different parameters.</div>
+    
+    <div class="question">10. What is method overriding?</div>
+    <div class="answer">Method overriding allows a subclass to provide a specific implementation of a method already defined in its superclass.</div>
+    
+    <!-- Questions 11-20 -->
+    <div class="question">11. What is the difference between overloading and overriding?</div>
+    <div class="answer">Overloading is resolving method calls based on different parameters within the same class; overriding involves redefining a superclass method in a subclass.</div>
+    
+    <div class="question">12. What is a constructor?</div>
+    <div class="answer">A constructor is a special method used to initialize objects when they are created.</div>
+    
+    <div class="question">13. What is a destructor?</div>
+    <div class="answer">A destructor is a method called when an object is destroyed, typically used for cleanup.</div>
+    
+    <div class="question">14. What is the difference between a constructor and a method?</div>
+    <div class="answer">A constructor is used for object initialization and is called automatically; a method defines behavior and is called explicitly.</div>
+    
+    <div class="question">15. What is a static method?</div>
+    <div class="answer">A static method belongs to the class rather than an instance, and it can be called without creating an object of the class.</div>
+    
+    <div class="question">16. What is a class variable?</div>
+    <div class="answer">A class variable is shared among all instances of a class, whereas an instance variable is unique to each object.</div>
+    
+    <div class="question">17. What is an instance variable?</div>
+    <div class="answer">An instance variable is a variable defined inside a class and is unique to each object created from the class.</div>
+    
+    <div class="question">18. What is a superclass?</div>
+    <div class="answer">A superclass (parent class) is a class that is inherited from by another class (subclass).</div>
+    
+    <div class="question">19. What is a subclass?</div>
+    <div class="answer">A subclass (child class) inherits from a superclass and can extend or override its behavior.</div>
+    
+    <div class="question">20. What is the <span class="keyword">this</span> keyword?</div>
+    <div class="answer">The <span class="keyword">this</span> keyword refers to the current instance of a class, used to differentiate instance variables from parameters.</div>
+    
+    <!-- Questions 21-30 -->
+    <div class="question">21. What is the <span class="keyword">super</span> keyword?</div>
+    <div class="answer">The <span class="keyword">super</span> keyword refers to the superclass, often used to call a superclass's methods or constructor from a subclass.</div>
+    
+    <div class="question">22. What is an interface?</div>
+    <div class="answer">An interface defines a contract of methods that a class must implement, but it cannot provide method implementations.</div>
+    
+    <div class="question">23. What is an abstract class?</div>
+    <div class="answer">An abstract class cannot be instantiated and may contain abstract methods (methods without implementations) that must be implemented by subclasses.</div>
+    
+    <div class="question">24. What is the difference between an abstract class and an interface?</div>
+    <div class="answer">An abstract class can have implemented methods and is used for common behavior; an interface defines a contract with no implementation and is used for multiple inheritance.</div>
+    
+    <div class="question">25. What is multiple inheritance?</div>
+    <div class="answer">Multiple inheritance occurs when a class inherits from more than one class. Some languages (e.g., Java) do not support multiple inheritance to avoid complexity.</div>
+    
+    <div class="question">26. What is the difference between dynamic binding and static binding?</div>
+    <div class="answer">Dynamic binding occurs at runtime, typically for method overriding. Static binding occurs at compile-time, such as when calling methods of final or private classes.</div>
+    
+    <div class="question">27. What is an abstract method?</div>
+    <div class="answer">An abstract method is a method declared in an abstract class or interface, which must be implemented by subclasses.</div>
+    
+    <div class="question">28. What is the difference between an interface and an abstract class?</div>
+    <div class="answer">An interface only defines method signatures with no implementation, whereas an abstract class can have both abstract and concrete methods.</div>
+    
+    <div class="question">29. What is a package?</div>
+    <div class="answer">A package is a namespace that organizes a set of related classes and interfaces, making it easier to manage and reuse code.</div>
+    
+    <div class="question">30. What is the access modifier <span class="keyword">public</span>?</div>
+    <div class="answer">A <span class="keyword">public</span> modifier allows access to the class, method, or variable from any other class.</div>
+    
+    <!-- Questions 31-40 -->
+    <div class="question">31. What is the access modifier <span class="keyword">private</span>?</div>
+    <div class="answer">A <span class="keyword">private</span> modifier restricts access to the class, method, or variable to only within the same class.</div>
+    
+    <div class="question">32. What is the access modifier <span class="keyword">protected</span>?</div>
+    <div class="answer">A <span class="keyword">protected</span> modifier allows access to the class, method, or variable from the same class, subclasses, and classes in the same package.</div>
+    
+    <div class="question">33. What is the <span class="keyword">final</span> keyword?</div>
+    <div class="answer">The <span class="keyword">final</span> keyword can be applied to variables, methods, and classes, making them immutable or preventing method overriding or inheritance.</div>
+    
+    <div class="question">34. What is the <span class="keyword">static</span> keyword?</div>
+    <div class="answer">The <span class="keyword">static</span> keyword allows class-level variables and methods that are shared across all instances of the class.</div>
+    
+    <div class="question">35. What is the <span class="keyword">transient</span> keyword?</div>
+    <div class="answer">The <span class="keyword">transient</span> keyword is used in Java to indicate that a variable should not be serialized.</div>
+    
+    <div class="question">36. What is the <span class="keyword">volatile</span> keyword?</div>
+    <div class="answer">The <span class="keyword">volatile</span> keyword ensures that a variable's value is always read from and written to the main memory, useful in multi-threaded programming.</div>
+    
+    <div class="question">37. What is the difference between shallow copy and deep copy?</div>
+    <div class="answer">A shallow copy duplicates the reference to objects, whereas a deep copy duplicates the object itself, including objects referenced by it.</div>
+    
+    <div class="question">38. What is a singleton class?</div>
+    <div class="answer">A singleton class is designed to allow only one instance of the class to exist at any time.</div>
+    
+    <div class="question">39. What is composition?</div>
+    <div class="answer">Composition is a design principle where one class contains instances of other classes to build complex types.</div>
+    
+    <div class="question">40. What is aggregation?</div>
+    <div class="answer">Aggregation is a type of association where one class can contain references to other classes, but the contained objects can exist independently.</div>
+    
+    <!-- Questions 41-50 -->
+    <div class="question">41. What is the difference between composition and aggregation?</div>
+    <div class="answer">Composition implies strong ownership, where the contained object's lifecycle depends on the container. Aggregation implies weak ownership, where the contained object's lifecycle is independent.</div>
+    
+    <div class="question">42. What is method hiding?</div>
+    <div class="answer">Method hiding occurs when a subclass defines a static method with the same name as a static method in its superclass.</div>
+    
+    <div class="question">43. What is a nested class?</div>
+    <div class="answer">A nested class is a class defined within another class. It can be static or non-static, depending on its relation to the outer class.</div>
+    
+    <div class="question">44. What is a lambda expression in OOP?</div>
+    <div class="answer">Lambda expressions allow the creation of anonymous functions to provide a clear and concise way to represent one method interface using an expression.</div>
+    
+    <div class="question">45. What is a functional interface?</div>
+    <div class="answer">A functional interface has exactly one abstract method, and it can have multiple default or static methods. It is used primarily for lambda expressions.</div>
+    
+    <div class="question">46. What is the difference between a constructor and a method?</div>
+    <div class="answer">A constructor initializes an object when it is created and has the same name as the class, whereas a method performs operations on an object and is called explicitly.</div>
+    
+    <div class="question">47. What is the difference between static and instance methods?</div>
+    <div class="answer">Static methods belong to the class and can be called without creating an instance, while instance methods are tied to object instances and require an object to be invoked.</div>
+    
+    <div class="question">48. What is a default constructor?</div>
+    <div class="answer">A default constructor is a no-argument constructor automatically provided by the compiler if no other constructors are explicitly defined in a class.</div>
+    
+    <div class="question">49. What is a constructor overloading?</div>
+    <div class="answer">Constructor overloading occurs when a class has more than one constructor with different parameters to initialize objects in different ways.</div>
+    
+    <div class="question">50. What is a method reference?</div>
+    <div class="answer">A method reference is a shorthand notation for calling a method in Java using the :: operator, typically used with lambda expressions.</div>
+    
+    <div class="footer">
+        <p>Object-Oriented Programming Study Guide | 50 Essential Questions</p>
+    </div>
+</body>
+</html>

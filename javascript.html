@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Interview Questions</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        
+        h1 {
+            color: #f0db4f;
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+        }
+        
+        .question {
+            background-color: white;
+            margin-bottom: 20px;
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-left: 4px solid #f0db4f;
+        }
+        
+        .question h3 {
+            margin-top: 0;
+            color: #323330;
+            font-weight: 600;
+        }
+        
+        .answer {
+            margin-top: 8px;
+        }
+        
+        .answer p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>JavaScript Interview Questions</h1>
+    
+    <div class="question">
+        <h3>1. What is JavaScript?</h3>
+        <div class="answer">
+            <p>JavaScript is a lightweight, interpreted programming language mainly used for web development.</p>
+            <p>It enables dynamic content, interactivity, and logic in web pages.</p>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>2. Is JavaScript the same as Java?</h3>
+        <div class="answer">
+            <p>No, JavaScript and Java are different languages.</p>
+            <p>Java is compiled and strongly typed; JavaScript is interpreted and loosely typed.</p>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>3. What are data types in JavaScript?</h3>
+        <div class="answer">
+            <p>JavaScript has primitive types like string, number, boolean, undefined, null, and symbol.</p>
+            <p>Objects are non-primitive types.</p>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>4. What is the difference between let, const, and var?</h3>
+        <div class="answer">
+            <p>var is function-scoped, let and const are block-scoped.</p>
+            <p>const values cannot be reassigned.</p>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>5. What is hoisting in JavaScript?</h3>
+        <div class="answer">
+            <p>Hoisting moves variable and function declarations to the top of their scope.</p>
+            <p>Only declarations are hoisted, not initializations.</p>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>6. What are closures in JavaScript?</h3>
+        <div class="answer">
+            <p>A closure is a function that retains access to its lexical scope even when called outside it.</p>
+            <p>It helps with data privacy and functional patterns.</p>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>7. What is the difference between == and ===?</h3>
+        <div class="answer">
+            <p>== compares values with type coercion.</p>
+            <p>=== checks for both value and type equality.</p>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>8. What is an IIFE?</h3>
+        <div class="answer">
+            <p>IIFE stands for Immediately Invoked Function Expression.</p>
+            <p>It runs immediately and helps create private scope.</p>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>9. What are arrow functions?</h3>
+        <div class="answer">
+            <p>Arrow functions are a concise way to write functions using =>.</p>
+            <p>They do not bind their own this.</p>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>10. What is the this keyword?</h3>
+        <div class="answer">
+            <p>this refers to the current execution context.</p>
+            <p>Its value depends on how the function is called.</p>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>11. What is event bubbling?</h3>
+        <div class="answer">
+            <p>Event bubbling means an event propagates from the target element up to its ancestors.</p>
+            <p>You can stop it using event.stopPropagation().</p>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>12. What is the DOM?</h3>
+        <div class="answer">
+            <p>DOM (Document Object Model) represents the page structure as a tree of nodes.</p>
+            <p>JavaScript uses it to manipulate HTML/CSS dynamically.</p>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>13. What is the difference between null and undefined?</h3>
+        <div class="answer">
+            <p>undefined means a variable is declared but not assigned.</p>
+            <p>null is an assigned value indicating "no value".</p>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>14. What are template literals?</h3>
+        <div class="answer">
+            <p>Template literals use backticks (`) for strings.</p>
+            <p>They support interpolation using ${} and multiline strings.</p>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>15. What is a callback function?</h3>
+        <div class="answer">
+            <p>A callback is a function passed into another function as an argument.</p>
+            <p>It's often used in asynchronous operations.</p>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>16. What is async/await?</h3>
+        <div class="answer">
+            <p>async and await simplify working with promises.</p>
+            <p>They allow asynchronous code to look like synchronous.</p>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>17. What is a promise in JavaScript?</h3>
+        <div class="answer">
+            <p>A promise represents the result of an asynchronous operation.</p>
+            <p>It can be pending, fulfilled, or rejected.</p>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>18. What is JSON?</h3>
+        <div class="answer">
+            <p>JSON (JavaScript Object Notation) is a text format for data exchange.</p>
+            <p>It's widely used for APIs.</p>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>19. What is the difference between map() and forEach()?</h3>
+        <div class="answer">
+            <p>map() returns a new array; forEach() doesn't.</p>
+            <p>Use map() for transformation and forEach() for iteration.</p>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>20. What are higher-order functions?</h3>
+        <div class="answer">
+            <p>Higher-order functions take functions as arguments or return them.</p>
+            <p>Examples include map(), filter(), and reduce().</p>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>21. What is the spread operator?</h3>
+        <div class="answer">
+            <p>The spread operator ... expands elements of an iterable.</p>
+            <p>It's used for array/object copying and merging.</p>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>22. What is destructuring in JavaScript?</h3>
+        <div class="answer">
+            <p>Destructuring extracts values from arrays or objects into variables.</p>
+            <p>It simplifies assignment and access.</p>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>23. What is the difference between function declaration and expression?</h3>
+        <div class="answer">
+            <p>Declarations are hoisted; expressions are not.</p>
+            <p>Function expressions can be anonymous.</p>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>24. What is NaN?</h3>
+        <div class="answer">
+            <p>NaN means "Not a Number".</p>
+            <p>It is the result of invalid numeric operations.</p>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>25. What is typeof operator?</h3>
+        <div class="answer">
+            <p>typeof checks the type of a variable.</p>
+            <p>It returns values like "number", "string", or "object".</p>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>26. What is the use of bind() method?</h3>
+        <div class="answer">
+            <p>bind() sets the value of this for a function.</p>
+            <p>It returns a new function.</p>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>27. What is the use of apply() and call()?</h3>
+        <div class="answer">
+            <p>Both invoke functions with a specified this value.</p>
+            <p>call() takes arguments individually; apply() takes them as an array.</p>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>28. What is event delegation?</h3>
+        <div class="answer">
+            <p>Event delegation uses a parent element to handle events for its children.</p>
+            <p>It reduces the number of event listeners.</p>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>29. What is a pure function?</h3>
+        <div class="answer">
+            <p>A pure function always returns the same result for the same inputs.</p>
+            <p>It has no side effects.</p>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>30. What is a shallow copy vs deep copy?</h3>
+        <div class="answer">
+            <p>A shallow copy copies references; deep copy copies nested objects.</p>
+            <p>Use structured cloning or JSON.parse(JSON.stringify(obj)) for deep copy.</p>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>31. What is localStorage?</h3>
+        <div class="answer">
+            <p>localStorage stores data in the browser with no expiration time.</p>
+            <p>It stores key-value pairs as strings.</p>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>32. What is the difference between localStorage and sessionStorage?</h3>
+        <div class="answer">
+            <p>localStorage persists until cleared; sessionStorage lasts per session.</p>
+            <p>Both store strings only.</p>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>33. What is the event loop in JavaScript?</h3>
+        <div class="answer">
+            <p>The event loop handles asynchronous callbacks.</p>
+            <p>It ensures non-blocking execution of code.</p>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>34. What is a stack and heap?</h3>
+        <div class="answer">
+            <p>The stack stores function calls; the heap stores objects.</p>
+            <p>JavaScript manages both automatically.</p>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>35. What is memory leak?</h3>
+        <div class="answer">
+            <p>A memory leak occurs when objects are not garbage collected.</p>
+            <p>It leads to increased memory usage and performance issues.</p>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>36. What is throttling and debouncing?</h3>
+        <div class="answer">
+            <p>Throttling limits function execution over time; debouncing delays execution until inactivity.</p>
+            <p>Both optimize performance in event-heavy apps.</p>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>37. What are modules in JavaScript?</h3>
+        <div class="answer">
+            <p>Modules allow code to be split into reusable files.</p>
+            <p>They use import and export keywords.</p>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>38. What is a symbol?</h3>
+        <div class="answer">
+            <p>A Symbol is a unique and immutable primitive value.</p>
+            <p>Used for object property keys to avoid name collisions.</p>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>39. What is setTimeout()?</h3>
+        <div class="answer">
+            <p>setTimeout() executes code after a delay.</p>
+            <p>It returns a timer ID for cancellation.</p>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>40. What is setInterval()?</h3>
+        <div class="answer">
+            <p>setInterval() runs code repeatedly after a fixed time interval.</p>
+            <p>Use clearInterval() to stop it.</p>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>41. What is a generator function?</h3>
+        <div class="answer">
+            <p>A generator yields multiple values using function* syntax.</p>
+            <p>You use next() to get each value.</p>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>42. What is strict mode?</h3>
+        <div class="answer">
+            <p>Strict mode enforces stricter parsing and error handling.</p>
+            <p>It's enabled with "use strict".</p>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>43. What is the new keyword?</h3>
+        <div class="answer">
+            <p>new creates an instance of an object or constructor function.</p>
+            <p>It links the prototype chain and initializes this.</p>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>44. What are falsy values in JavaScript?</h3>
+        <div class="answer">
+            <p>Falsy values are false, 0, "", null, undefined, and NaN.</p>
+            <p>They evaluate to false in conditions.</p>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>45. What is type coercion?</h3>
+        <div class="answer">
+            <p>Type coercion automatically converts values to the expected type.</p>
+            <p>It's implicit and can lead to bugs.</p>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>46. What is the difference between async and defer in script tags?</h3>
+        <div class="answer">
+            <p>async loads and executes independently; defer waits for DOM parsing.</p>
+            <p>defer maintains script order.</p>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>47. What is DOMContentLoaded?</h3>
+        <div class="answer">
+            <p>DOMContentLoaded fires when the initial HTML is fully loaded and parsed.</p>
+            <p>It's faster than window.onload.</p>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>48. What is a WeakMap?</h3>
+        <div class="answer">
+            <p>A WeakMap holds key-value pairs with weak references.</p>
+            <p>Keys must be objects; it's not iterable.</p>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>49. What is currying in JavaScript?</h3>
+        <div class="answer">
+            <p>Currying transforms a function with multiple arguments into a chain of functions.</p>
+            <p>It enables partial function application.</p>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>50. What is prototype in JavaScript?</h3>
+        <div class="answer">
+            <p>Every JavaScript object has a prototype property used for inheritance.</p>
+            <p>It allows objects to share methods.</p>
+        </div>
+    </div>
+</body>
+</html>

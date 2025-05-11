@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Express.js Interview Questions</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      line-height: 1.6;
+      margin: 0;
+      padding: 20px;
+    }
+
+    section {
+      max-width: 900px;
+      margin: auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 30px;
+      color: #007acc;
+    }
+
+    .question {
+      margin-bottom: 20px;
+    }
+
+    .question h3 {
+      margin: 0 0 8px;
+      font-size: 1.1rem;
+      color: #005b9f;
+    }
+
+    .question p {
+      margin: 0;
+      padding-left: 15px;
+    }
+
+    code {
+      background: #eef;
+      padding: 2px 4px;
+      border-radius: 4px;
+      font-size: 0.95em;
+    }
+  </style>
+</head>
+<body>
+  <section>
+    <h2 tabindex="0">Express.js – 25 Interview Questions</h2>
+
+    <div class="question"><h3>1. What is Express.js?</h3><p>Express.js is a minimal and flexible Node.js web application framework. It provides robust features for building web and API servers.</p></div>
+
+    <div class="question"><h3>2. How do you install Express.js?</h3><p>Use the command <code>npm install express</code>. It installs Express into your Node.js project.</p></div>
+
+    <div class="question"><h3>3. What is middleware in Express.js?</h3><p>Middleware functions are executed during the request-response cycle. They can modify the request, response, or terminate the request.</p></div>
+
+    <div class="question"><h3>4. What is the purpose of app.use()?</h3><p><code>app.use()</code> mounts middleware at a specified path and is executed for every request that matches the path.</p></div>
+
+    <div class="question"><h3>5. What is routing in Express.js?</h3><p>Routing defines how an application responds to client requests using HTTP methods like GET, POST, PUT, DELETE.</p></div>
+
+    <div class="question"><h3>6. How do you handle GET requests in Express?</h3><p>Use <code>app.get(path, callback)</code>. The callback handles the request and sends a response.</p></div>
+
+    <div class="question"><h3>7. What is the use of req.params?</h3><p><code>req.params</code> holds route parameters in the URL, used to access dynamic values from the URL path.</p></div>
+
+    <div class="question"><h3>8. What is req.body in Express?</h3><p><code>req.body</code> contains data sent in the body of a POST or PUT request. You need body-parsing middleware like <code>express.json()</code>.</p></div>
+
+    <div class="question"><h3>9. What is the purpose of res.send()?</h3><p><code>res.send()</code> sends a response to the client. It can send strings, JSON, or buffers.</p></div>
+
+    <div class="question"><h3>10. What is the difference between res.send() and res.json()?</h3><p><code>res.send()</code> sends any type of response. <code>res.json()</code> sends a JSON response with appropriate headers.</p></div>
+
+    <div class="question"><h3>11. How do you handle POST requests in Express?</h3><p>Use <code>app.post(path, callback)</code>. You typically extract form or JSON data using <code>req.body</code>.</p></div>
+
+    <div class="question"><h3>12. What is the role of next() in Express middleware?</h3><p><code>next()</code> passes control to the next middleware. It helps in chaining multiple middleware functions.</p></div>
+
+    <div class="question"><h3>13. What is static file serving in Express?</h3><p>Express can serve static files like HTML, CSS, and images using <code>express.static()</code>.</p></div>
+
+    <div class="question"><h3>14. How do you serve static files in Express?</h3><p>Use <code>app.use(express.static('public'))</code> to serve files from the <code>public</code> directory.</p></div>
+
+    <div class="question"><h3>15. What is error handling middleware in Express?</h3><p>It’s a function with four parameters: <code>err, req, res, next</code>. It handles errors in the app globally.</p></div>
+
+    <div class="question"><h3>16. What is CORS and how do you enable it in Express?</h3><p>CORS (Cross-Origin Resource Sharing) allows requests from different domains. Use the <code>cors</code> package and <code>app.use(cors())</code>.</p></div>
+
+    <div class="question"><h3>17. How do you connect Express to MongoDB?</h3><p>Use <code>mongoose.connect()</code> or the native MongoDB driver. Then use Express routes to interact with the database.</p></div>
+
+    <div class="question"><h3>18. How do you create REST APIs with Express?</h3><p>Define routes using HTTP methods and handle CRUD operations. Use middleware for validation, authentication, etc.</p></div>
+
+    <div class="question"><h3>19. How do you handle 404 errors in Express?</h3><p>Add a middleware with <code>res.status(404).send('Not Found')</code> at the end to handle unmatched routes.</p></div>
+
+    <div class="question"><h3>20. How can you secure an Express app?</h3><p>Use HTTPS, Helmet, validation, and authentication to prevent common attacks like XSS and CSRF.</p></div>
+
+    <div class="question"><h3>21. What is app.listen() used for?</h3><p><code>app.listen(port)</code> starts the server on a specified port, making your app ready to accept requests.</p></div>
+
+    <div class="question"><h3>22. Can you create multiple routers in Express?</h3><p>Yes, use <code>express.Router()</code> to modularize routes and organize code for larger apps.</p></div>
+
+    <div class="question"><h3>23. How do you handle query parameters in Express?</h3><p>Use <code>req.query</code> to access query parameters. For example, <code>?id=123</code> is accessed with <code>req.query.id</code>.</p></div>
+
+    <div class="question"><h3>24. What is Helmet in Express?</h3><p>Helmet is a middleware that adds security headers to protect apps from common web vulnerabilities.</p></div>
+
+    <div class="question"><h3>25. What is the role of express.json()?</h3><p>It parses incoming JSON request bodies. It's required to access <code>req.body</code> in POST/PUT routes.</p></div>
+
+  </section>
+</body>
+</html>

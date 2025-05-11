@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MongoDB Interview Questions</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        h1 {
+            color: #4DB33D; /* MongoDB green */
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #3F3E42;
+            border-bottom: 2px solid #4DB33D;
+            padding-bottom: 10px;
+        }
+        .question {
+            font-weight: bold;
+            margin-top: 20px;
+            color: #13aa52;
+        }
+        .answer {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+        li {
+            margin-bottom: 5px;
+        }
+        section {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>MongoDB Interview Questions</h1>
+    
+    <section>
+        <h2 tabindex="0">MongoDB - 25 Interview Questions</h2>
+        
+        <div class="question">1. What is MongoDB?</div>
+        <div class="answer">
+            <ul>
+                <li>MongoDB is a NoSQL, document-oriented database.</li>
+                <li>It stores data in flexible, JSON-like BSON format.</li>
+            </ul>
+        </div>
+        
+        <div class="question">2. What is a collection in MongoDB?</div>
+        <div class="answer">
+            <ul>
+                <li>A collection is a group of MongoDB documents.</li>
+                <li>It is similar to a table in relational databases.</li>
+            </ul>
+        </div>
+        
+        <div class="question">3. What is a document in MongoDB?</div>
+        <div class="answer">
+            <ul>
+                <li>A document is a single record in BSON format.</li>
+                <li>It can have nested fields and arrays.</li>
+            </ul>
+        </div>
+        
+        <div class="question">4. How is MongoDB different from SQL databases?</div>
+        <div class="answer">
+            <ul>
+                <li>MongoDB is schema-less and stores documents, while SQL uses structured tables.</li>
+                <li>It's better suited for unstructured and hierarchical data.</li>
+            </ul>
+        </div>
+        
+        <div class="question">5. What is BSON?</div>
+        <div class="answer">
+            <ul>
+                <li>BSON stands for Binary JSON.</li>
+                <li>It is a binary representation of JSON used internally by MongoDB.</li>
+            </ul>
+        </div>
+        
+        <div class="question">6. What are the advantages of MongoDB?</div>
+        <div class="answer">
+            <ul>
+                <li>MongoDB offers flexibility, scalability, and high availability.</li>
+                <li>It handles unstructured data and supports horizontal scaling.</li>
+            </ul>
+        </div>
+        
+        <div class="question">7. What is the default port of MongoDB?</div>
+        <div class="answer">
+            <ul>
+                <li>The default port is 27017.</li>
+                <li>You can change it in the configuration.</li>
+            </ul>
+        </div>
+        
+        <div class="question">8. What is a primary key in MongoDB?</div>
+        <div class="answer">
+            <ul>
+                <li>Every document must have a unique _id field.</li>
+                <li>It serves as the primary key.</li>
+            </ul>
+        </div>
+        
+        <div class="question">9. What is a replica set?</div>
+        <div class="answer">
+            <ul>
+                <li>A replica set is a group of MongoDB servers for redundancy.</li>
+                <li>One acts as primary, others as secondaries.</li>
+            </ul>
+        </div>
+        
+        <div class="question">10. What is sharding in MongoDB?</div>
+        <div class="answer">
+            <ul>
+                <li>Sharding distributes data across multiple machines.</li>
+                <li>It allows horizontal scaling for large datasets.</li>
+            </ul>
+        </div>
+        
+        <div class="question">11. What is indexing in MongoDB?</div>
+        <div class="answer">
+            <ul>
+                <li>Indexes support efficient query execution.</li>
+                <li>They work like indexes in books or databases.</li>
+            </ul>
+        </div>
+        
+        <div class="question">12. What is the aggregation framework?</div>
+        <div class="answer">
+            <ul>
+                <li>Aggregation processes data records and returns computed results.</li>
+                <li>It's used for filtering, grouping, and transformations.</li>
+            </ul>
+        </div>
+        
+        <div class="question">13. What is the difference between find() and findOne()?</div>
+        <div class="answer">
+            <ul>
+                <li>find() returns a cursor for all matched documents.</li>
+                <li>findOne() returns the first matched document only.</li>
+            </ul>
+        </div>
+        
+        <div class="question">14. How do you insert data in MongoDB?</div>
+        <div class="answer">
+            <ul>
+                <li>Use insertOne() or insertMany() methods.</li>
+                <li>They add one or multiple documents respectively.</li>
+            </ul>
+        </div>
+        
+        <div class="question">15. How do you update a document?</div>
+        <div class="answer">
+            <ul>
+                <li>Use updateOne(), updateMany(), or replaceOne().</li>
+                <li>They modify existing documents based on conditions.</li>
+            </ul>
+        </div>
+        
+        <div class="question">16. How do you delete a document?</div>
+        <div class="answer">
+            <ul>
+                <li>Use deleteOne() or deleteMany().</li>
+                <li>They remove documents from a collection.</li>
+            </ul>
+        </div>
+        
+        <div class="question">17. What is the use of $set in MongoDB?</div>
+        <div class="answer">
+            <ul>
+                <li>$set updates the value of a field in a document.</li>
+                <li>If the field doesn't exist, it adds it.</li>
+            </ul>
+        </div>
+        
+        <div class="question">18. What is the use of $match in aggregation?</div>
+        <div class="answer">
+            <ul>
+                <li>$match filters documents based on conditions.</li>
+                <li>It works like the WHERE clause in SQL.</li>
+            </ul>
+        </div>
+        
+        <div class="question">19. What is a capped collection?</div>
+        <div class="answer">
+            <ul>
+                <li>Capped collections have a fixed size and maintain insertion order.</li>
+                <li>Old documents are automatically removed when full.</li>
+            </ul>
+        </div>
+        
+        <div class="question">20. What is the ObjectId in MongoDB?</div>
+        <div class="answer">
+            <ul>
+                <li>ObjectId is the default unique identifier for documents.</li>
+                <li>It includes timestamp and machine-specific data.</li>
+            </ul>
+        </div>
+        
+        <div class="question">21. What is Compass in MongoDB?</div>
+        <div class="answer">
+            <ul>
+                <li>MongoDB Compass is a GUI for interacting with MongoDB databases.</li>
+                <li>It helps visualize schema, run queries, and manage indexes.</li>
+            </ul>
+        </div>
+        
+        <div class="question">22. What is the $group stage in aggregation?</div>
+        <div class="answer">
+            <ul>
+                <li>$group groups input documents by a specified key.</li>
+                <li>It's similar to GROUP BY in SQL.</li>
+            </ul>
+        </div>
+        
+        <div class="question">23. What is schema validation in MongoDB?</div>
+        <div class="answer">
+            <ul>
+                <li>MongoDB allows defining rules for document structure using JSON schema.</li>
+                <li>It ensures data consistency in collections.</li>
+            </ul>
+        </div>
+        
+        <div class="question">24. What is a text index?</div>
+        <div class="answer">
+            <ul>
+                <li>A text index supports searching strings in documents.</li>
+                <li>It enables full-text search with operators like $text.</li>
+            </ul>
+        </div>
+        
+        <div class="question">25. Can MongoDB handle transactions?</div>
+        <div class="answer">
+            <ul>
+                <li>Yes, MongoDB supports multi-document ACID transactions (from version 4.0+).</li>
+                <li>They ensure data integrity like SQL databases.</li>
+            </ul>
+        </div>
+    </section>
+    
+    <footer style="text-align: center; margin-top: 30px; color: #666; font-size: 0.8em;">
+        MongoDB and the leaf logo are registered trademarks of MongoDB, Inc.
+    </footer>
+</body>
+</html>
