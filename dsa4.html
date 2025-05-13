@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Java Data Structures Guide</title>
+  <style>
+    :root {
+      --primary-color: #3498db;
+      --secondary-color: #2c3e50;
+      --accent-color: #e74c3c;
+      --light-bg: #f5f7fa;
+      --code-bg: #282c34;
+      --white: #ffffff;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      background-color: var(--light-bg);
+    }
+    
+    header {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: var(--white);
+      padding: 2rem;
+      border-radius: 8px;
+      margin: 2rem 0;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+    
+    h2 {
+      color: var(--secondary-color);
+      border-bottom: 3px solid var(--primary-color);
+      padding-bottom: 10px;
+      margin-top: 40px;
+    }
+    
+    h3 {
+      color: var(--primary-color);
+      margin-top: 25px;
+    }
+    
+    .card {
+      background-color: var(--white);
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    pre {
+      background-color: var(--code-bg);
+      color: var(--white);
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+      font-family: 'Consolas', 'Courier New', monospace;
+      margin: 15px 0;
+    }
+    
+    code {
+      font-family: 'Consolas', 'Courier New', monospace;
+    }
+    
+    .implementation-list {
+      list-style-type: none;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+    
+    .implementation-item {
+      background-color: var(--primary-color);
+      color: var(--white);
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    
+    .implementation-item:hover {
+      background-color: var(--secondary-color);
+    }
+    
+    .method {
+      background-color: rgba(52, 152, 219, 0.1);
+      border-left: 4px solid var(--primary-color);
+      padding: 10px;
+      margin: 10px 0;
+    }
+    
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      padding: 20px;
+      color: var(--secondary-color);
+      font-size: 0.9rem;
+    }
+    
+    @media (max-width: 768px) {
+      body {
+        padding: 0 10px;
+      }
+      
+      header {
+        padding: 1.5rem;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Java Data Structures Guide</h1>
+    <p>A comprehensive look at common data structures implemented in Java</p>
+  </header>
+  
+  <main>
+   
+    <!-- Sorting Algorithms Section -->
+    <section id="sorting">
+      <h2>9. Sorting Algorithms</h2>
+      <p>
+        Sorting algorithms are used to rearrange a collection of items in a specific order, typically in ascending or descending order.
+      </p>
+      
+      <div class="card">
+        <h3>a) Bubble Sort</h3>
+        <p>Time Complexity: O(n²) | Space Complexity: O(1)</p>
+        <pre><code>void bubbleSort(int[] arr) {
+    int n = arr.length;
+    for (int i = 0; i < n - 1; i++)
+        for (int j = 0; j < n - i - 1; j++)
+            if (arr[j] > arr[j + 1]) {
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+}</code></pre>
+      </div>
+      
+      <div class="card">
+        <h3>b) Selection Sort</h3>
+        <p>Time Complexity: O(n²) | Space Complexity: O(1)</p>
+        <pre><code>void selectionSort(int[] arr) {
+    for (int i = 0; i < arr.length - 1; i++) {
+        int minIdx = i;
+        for (int j = i + 1; j < arr.length; j++)
+            if (arr[j] < arr[minIdx])
+                minIdx = j;
+        int temp = arr[minIdx];
+        arr[minIdx] = arr[i];
+        arr[i] = temp;
+    }
+}</code></pre>
+      </div>
+      
+      <div class="card">
+        <h3>c) Insertion Sort</h3>
+        <p>Time Complexity: O(n²) | Space Complexity: O(1)</p>
+        <pre><code>void insertionSort(int[] arr) {
+    for (int i = 1; i < arr.length; i++) {
+        int key = arr[i], j = i - 1;
+        while (j >= 0 && arr[j] > key)
+            arr[j + 1] = arr[j--];
+        arr[j + 1] = key;
+    }
+}</code></pre>
+      </div>
+      
+      <div class="card">
+        <h3>d) Merge Sort</h3>
+        <p>Time Complexity: O(n log n) | Space Complexity: O(n)</p>
+        <pre><code>void mergeSort(int[] arr, int l, int r) {
+    if (l < r) {
+        int m = (l + r) / 2;
+        mergeSort(arr, l, m);
+        mergeSort(arr, m + 1, r);
+        merge(arr, l, m, r);
+    }
+}
+
+void merge(int[] arr, int l, int m, int r) {
+    int[] left = Arrays.copyOfRange(arr, l, m + 1);
+    int[] right = Arrays.copyOfRange(arr, m + 1, r + 1);
+    int i = 0, j = 0, k = l;
+
+    while (i < left.length && j < right.length)
+        arr[k++] = (left[i] <= right[j]) ? left[i++] : right[j++];
+
+    while (i < left.length) arr[k++] = left[i++];
+    while (j < right.length) arr[k++] = right[j++];
+}</code></pre>
+      </div>
+      
+      <div class="card">
+        <h3>e) Quick Sort</h3>
+        <p>Time Complexity: O(n log n) average, O(n²) worst | Space Complexity: O(log n)</p>
+        <pre><code>void quickSort(int[] arr, int low, int high) {
+    if (low < high) {
+        int pi = partition(arr, low, high);
+        quickSort(arr, low, pi - 1);
+        quickSort(arr, pi + 1, high);
+    }
+}
+
+int partition(int[] arr, int low, int high) {
+    int pivot = arr[high], i = low - 1;
+    for (int j = low; j < high; j++) {
+        if (arr[j] < pivot) {
+            i++;
+            int tmp = arr[i]; arr[i] = arr[j]; arr[j] = tmp;
+        }
+    }
+    int tmp = arr[i + 1]; arr[i + 1] = arr[high]; arr[high] = tmp;
+    return i + 1;
+}</code></pre>
+      </div>
+      
+      <div class="card">
+        <h3>f) Heap Sort</h3>
+        <p>Time Complexity: O(n log n) | Space Complexity: O(1)</p>
+        <pre><code>void heapSort(int[] arr) {
+    int n = arr.length;
+
+    for (int i = n / 2 - 1; i >= 0; i--) heapify(arr, n, i);
+    for (int i = n - 1; i > 0; i--) {
+        int tmp = arr[0]; arr[0] = arr[i]; arr[i] = tmp;
+        heapify(arr, i, 0);
+    }
+}
+
+void heapify(int[] arr, int n, int i) {
+    int largest = i, l = 2 * i + 1, r = 2 * i + 2;
+    if (l < n && arr[l] > arr[largest]) largest = l;
+    if (r < n && arr[r] > arr[largest]) largest = r;
+    if (largest != i) {
+        int tmp = arr[i]; arr[i] = arr[largest]; arr[largest] = tmp;
+        heapify(arr, n, largest);
+    }
+}</code></pre>
+      </div>
+      
+      <div class="card">
+        <h3>g) Counting Sort</h3>
+        <p>Time Complexity: O(n+k) | Space Complexity: O(n+k)</p>
+        <pre><code>void countingSort(int[] arr) {
+    int max = Arrays.stream(arr).max().getAsInt();
+    int[] count = new int[max + 1];
+
+    for (int num : arr) count[num]++;
+    for (int i = 1; i < count.length; i++) count[i] += count[i - 1];
+
+    int[] output = new int[arr.length];
+    for (int i = arr.length - 1; i >= 0; i--)
+        output[--count[arr[i]]] = arr[i];
+
+    System.arraycopy(output, 0, arr, 0, arr.length);
+}</code></pre>
+      </div>
+      
+      <div class="card">
+        <h3>h) Radix Sort</h3>
+        <p>Time Complexity: O(d*(n+k)) | Space Complexity: O(n+k)</p>
+        <pre><code>void radixSort(int[] arr) {
+    int max = Arrays.stream(arr).max().getAsInt();
+    for (int exp = 1; max / exp > 0; exp *= 10)
+        countingSortByDigit(arr, exp);
+}
+
+void countingSortByDigit(int[] arr, int exp) {
+    int[] output = new int[arr.length];
+    int[] count = new int[10];
+
+    for (int num : arr)
+        count[(num / exp) % 10]++;
+
+    for (int i = 1; i < 10; i++)
+        count[i] += count[i - 1];
+
+    for (int i = arr.length - 1; i >= 0; i--) {
+        int idx = (arr[i] / exp) % 10;
+        output[--count[idx]] = arr[i];
+    }
+
+    System.arraycopy(output, 0, arr, 0, arr.length);
+}</code></pre>
+      </div>
+      
+      <div class="card">
+        <h3>i) Bucket Sort</h3>
+        <p>Time Complexity: O(n+k) | Space Complexity: O(n+k)</p>
+        <pre><code>void bucketSort(float[] arr) {
+    int n = arr.length;
+    List<Float>[] buckets = new List[n];
+
+    for (int i = 0; i < n; i++)
+        buckets[i] = new ArrayList<>();
+
+    for (float num : arr)
+        buckets[(int)(n * num)].add(num);
+
+    for (List<Float> bucket : buckets)
+        Collections.sort(bucket);
+
+    int idx = 0;
+    for (List<Float> bucket : buckets)
+        for (float num : bucket)
+            arr[idx++] = num;
+}</code></pre>
+      </div>
+    </section>
+    
+    <!-- Searching Algorithms Section -->
+    <section id="searching">
+      <h2>10. Searching Algorithms</h2>
+      <p>
+        Searching algorithms are used to find a specific element in a collection of elements.
+      </p>
+      
+      <div class="card">
+        <h3>a) Linear Search</h3>
+        <p>Time Complexity: O(n) | Space Complexity: O(1)</p>
+        <pre><code>int linearSearch(int[] arr, int target) {
+    for (int i = 0; i < arr.length; i++) {
+        if (arr[i] == target) return i;  // Found the element
+    }
+    return -1;  // Element not found
+}</code></pre>
+      </div>
+      
+      <div class="card">
+        <h3>b) Binary Search</h3>
+        <p>Time Complexity: O(log n) | Space Complexity: O(1)</p>
+        <pre><code>int binarySearch(int[] arr, int target) {
+    int left = 0, right = arr.length - 1;
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+
+        if (arr[mid] == target) return mid;  // Target found
+        if (arr[mid] < target) left = mid + 1;  // Search in the right half
+        else right = mid - 1;  // Search in the left half
+    }
+    return -1;  // Element not found
+}</code></pre>
+      </div>
+      
+      <div class="card">
+        <h3>c) Ternary Search</h3>
+        <p>Time Complexity: O(log₃ n) | Space Complexity: O(1)</p>
+        <pre><code>int ternarySearch(int[] arr, int left, int right, int target) {
+    if (right >= left) {
+        int mid1 = left + (right - left) / 3;
+        int mid2 = right - (right - left) / 3;
+
+        if (arr[mid1] == target) return mid1;  // Target found
+        if (arr[mid2] == target) return mid2;  // Target found
+
+        if (target < arr[mid1]) return ternarySearch(arr, left, mid1 - 1, target);  // Search left
+        if (target > arr[mid2]) return ternarySearch(arr, mid2 + 1, right, target);  // Search right
+        return ternarySearch(arr, mid1 + 1, mid2 - 1, target);  // Search middle
+    }
+    return -1;  // Element not found
+}</code></pre>
+      </div>
+    </section>
+    
+    <!-- Dynamic Programming Section -->
+    <section id="dynamic-programming">
+      <h2>11. Dynamic Programming</h2>
+      <p>
+        Dynamic Programming is an algorithmic paradigm that solves complex problems by breaking them down into simpler subproblems.
+      </p>
+      
+      <div class="card">
+        <h3>a) Fibonacci Sequence</h3>
+        <p>Time Complexity: O(n) | Space Complexity: O(n)</p>
+        <pre><code>int fibonacci(int n) {
+    int[] dp = new int[n + 1];
+    dp[0] = 0;
+    dp[1] = 1;
+    
+    for (int i = 2; i <= n; i++) {
+        dp[i] = dp[i - 1] + dp[i - 2];
+    }
+    return dp[n];
+}</code></pre>
+      </div>
+      
+      <div class="card">
+        <h3>b) 0/1 Knapsack Problem</h3>
+        <p>Time Complexity: O(n×W) | Space Complexity: O(n×W)</p>
+        <pre><code>int knapsack(int[] values, int[] weights, int W) {
+    int n = values.length;
+    int[][] dp = new int[n + 1][W + 1];
+
+    for (int i = 0; i <= n; i++) {
+        for (int w = 0; w <= W; w++) {
+            if (i == 0 || w == 0) dp[i][w] = 0;
+            else if (weights[i - 1] <= w)
+                dp[i][w] = Math.max(values[i - 1] + dp[i - 1][w - weights[i - 1]], dp[i - 1][w]);
+            else
+                dp[i][w] = dp[i - 1][w];
+        }
+    }
+    return dp[n][W];
+}</code></pre>
+      </div>
+      
+      <div class="card">
+        <h3>c) Longest Common Subsequence (LCS)</h3>
+        <p>Time Complexity: O(m×n) | Space Complexity: O(m×n)</p>
+        <pre><code>int lcs(String str1, String str2) {
+    int m = str1.length(), n = str2.length();
+    int[][] dp = new int[m + 1][n + 1];
+
+    for (int i = 0; i <= m; i++) {
+        for (int j = 0; j <= n; j++) {
+            if (i == 0 || j == 0) dp[i][j] = 0;
+            else if (str1.charAt(i - 1) == str2.charAt(j - 1))
+                dp[i][j] = dp[i - 1][j - 1] + 1;
+            else
+                dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+        }
+    }
+    return dp[m][n];
+}</code></pre>
+      </div>
+      
+      <div class="card">
+        <h3>d) Longest Increasing Subsequence (LIS)</h3>
+        <p>Time Complexity: O(n²) | Space Complexity: O(n)</p>
+        <pre><code>int lis(int[] arr) {
+    int n = arr.length;
+    int[] dp = new int[n];
+    Arrays.fill(dp, 1);  // Initialize all elements of dp as 1
+
+    for (int i = 1; i < n; i++) {
+        for (int j = 0; j < i; j++) {
+            if (arr[i] > arr[j])
+                dp[i] = Math.max(dp[i], dp[j] + 1);
+        }
+    }
+    return Arrays.stream(dp).max().getAsInt();  // Return the maximum value in dp
+}</code></pre>
+      </div>
+      
+      <div class="card">
+        <h3>e) Coin Change Problem</h3>
+        <p>Time Complexity: O(amount×coins) | Space Complexity: O(amount)</p>
+        <pre><code>int coinChange(int[] coins, int amount) {
+    int[] dp = new int[amount + 1];
+    Arrays.fill(dp, amount + 1);  // Initialize dp with a value larger than the amount
+    dp[0] = 0;
+
+    for (int i = 1; i <= amount; i++) {
+        for (int coin : coins) {
+            if (i - coin >= 0)
+                dp[i] = Math.min(dp[i], dp[i - coin] + 1);
+        }
+    }
+    return dp[amount] > amount ? -1 : dp[amount];  // If no solution, return -1
+}</code></pre>
+      </div>
+      
+      <div class="card">
+        <h3>f) Matrix Chain Multiplication</h3>
+        <p>Time Complexity: O(n³) | Space Complexity: O(n²)</p>
+        <pre><code>int matrixChainOrder(int[] dims) {
+    int n = dims.length;
+    int[][] dp = new int[n][n];
+
+    for (int len = 2; len < n; len++) {
+        for (int i = 1; i < n - len + 1; i++) {
+            int j = i + len - 1;
+            dp[i][j] = Integer.MAX_VALUE;
+            for (int k = i; k <= j - 1; k++) {
+                dp[i][j] = Math.min(dp[i][j], dp[i][k] + dp[k + 1][j] + dims[i - 1] * dims[k] * dims[j]);
+            }
+        }
+    }
+    return dp[1][n - 1];
+}</code></pre>
+      </div>
+      
+      <div class="card">
+        <h3>g) Subset Sum Problem</h3>
+        <p>Time Complexity: O(n×sum) | Space Complexity: O(n×sum)</p>
+        <pre><code>boolean subsetSum(int[] arr, int sum) {
+    int n = arr.length;
+    boolean[][] dp = new boolean[n + 1][sum + 1];
+
+    for (int i = 0; i <= n; i++) dp[i][0] = true;  // Base case: sum 0 is always possible
+
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= sum; j++) {
+            if (arr[i - 1] <= j)
+                dp[i][j] = dp[i - 1][j] || dp[i - 1][j - arr[i - 1]];
+            else
+                dp[i][j] = dp[i - 1][j];
+        }
+    }
+    return dp[n][sum];
+}</code></pre>
+      </div>
+    </section>
+  </main>
+  
+  <footer>
+    <p>Java Data Structures Guide © 2025</p>
+  </footer>
+</body>
+</html>

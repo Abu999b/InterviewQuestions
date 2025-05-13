@@ -1,0 +1,236 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DSA Java Examples</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 40px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        pre {
+            background: #eef;
+            border-left: 5px solid #3498db;
+            padding: 15px;
+            overflow-x: auto;
+        }
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+        section {
+            margin-bottom: 40px;
+        }
+    </style>
+</head>
+<body>
+    <h1>DSA - Java Examples</h1>
+
+    <section>
+        <h2>1. Arrays - Java Examples</h2>
+        <h3>a) Basics of Arrays</h3>
+        <p>Print all elements of an array:</p>
+        <pre><code>int[] arr = {1, 2, 3, 4, 5};
+for (int i = 0; i < arr.length; i++) {
+    System.out.print(arr[i] + " ");
+}</code></pre>
+
+        <h3>b) Two-pointer Technique</h3>
+        <p>Check if there exists a pair with a given sum in a sorted array:</p>
+        <pre><code>public boolean hasPairWithSum(int[] arr, int target) {
+    int left = 0, right = arr.length - 1;
+    while (left < right) {
+        int sum = arr[left] + arr[right];
+        if (sum == target) return true;
+        else if (sum < target) left++;
+        else right--;
+    }
+    return false;
+}</code></pre>
+
+        <h3>c) Sliding Window Technique</h3>
+        <p>Find the maximum sum of any subarray of size k:</p>
+        <pre><code>public int maxSumSubarray(int[] arr, int k) {
+    int maxSum = 0, windowSum = 0;
+
+    for (int i = 0; i < k; i++)
+        windowSum += arr[i];
+
+    maxSum = windowSum;
+
+    for (int i = k; i < arr.length; i++) {
+        windowSum += arr[i] - arr[i - k];
+        maxSum = Math.max(maxSum, windowSum);
+    }
+
+    return maxSum;
+}</code></pre>
+    </section>
+
+    <section>
+        <h2>2. Strings - Java Examples</h2>
+        <h3>a) String Manipulation</h3>
+        <p>Reverse a string:</p>
+        <pre><code>public String reverseString(String s) {
+    StringBuilder sb = new StringBuilder(s);
+    return sb.reverse().toString();
+}</code></pre>
+
+        <p>Count frequency of characters:</p>
+        <pre><code>public Map&lt;Character, Integer&gt; charFrequency(String s) {
+    Map&lt;Character, Integer&gt; map = new HashMap&lt;&gt;();
+    for (char c : s.toCharArray()) {
+        map.put(c, map.getOrDefault(c, 0) + 1);
+    }
+    return map;
+}</code></pre>
+
+        <h3>b) Pattern Matching: KMP Algorithm</h3>
+        <pre><code>public int[] computeLPS(String pattern) {
+    int[] lps = new int[pattern.length()];
+    int len = 0, i = 1;
+    while (i < pattern.length()) {
+        if (pattern.charAt(i) == pattern.charAt(len)) {
+            lps[i++] = ++len;
+        } else {
+            if (len != 0) len = lps[len - 1];
+            else lps[i++] = 0;
+        }
+    }
+    return lps;
+}
+
+public int kmpSearch(String text, String pattern) {
+    int[] lps = computeLPS(pattern);
+    int i = 0, j = 0;
+    while (i < text.length()) {
+        if (text.charAt(i) == pattern.charAt(j)) {
+            i++; j++;
+        }
+        if (j == pattern.length()) return i - j;
+        else if (i < text.length() && text.charAt(i) != pattern.charAt(j)) {
+            if (j != 0) j = lps[j - 1];
+            else i++;
+        }
+    }
+    return -1;
+}</code></pre>
+
+        <h3>c) Palindrome Checking</h3>
+        <pre><code>public boolean isPalindrome(String s) {
+    int left = 0, right = s.length() - 1;
+    while (left < right) {
+        if (s.charAt(left++) != s.charAt(right--)) return false;
+    }
+    return true;
+}</code></pre>
+    </section>
+
+    <section>
+        <h2>3. Linked Lists - Java Examples</h2>
+        <h3>a) Singly Linked List (Insertion)</h3>
+        <pre><code>class Node {
+    int data;
+    Node next;
+    Node(int data) { this.data = data; }
+}
+
+class SinglyLinkedList {
+    Node head;
+
+    void insert(int data) {
+        Node newNode = new Node(data);
+        if (head == null) head = newNode;
+        else {
+            Node temp = head;
+            while (temp.next != null) temp = temp.next;
+            temp.next = newNode;
+        }
+    }
+
+    void display() {
+        Node temp = head;
+        while (temp != null) {
+            System.out.print(temp.data + " ");
+            temp = temp.next;
+        }
+    }
+}</code></pre>
+
+        <h3>b) Reversing a Singly Linked List</h3>
+        <pre><code>Node reverse(Node head) {
+    Node prev = null;
+    Node current = head;
+    while (current != null) {
+        Node next = current.next;
+        current.next = prev;
+        prev = current;
+        current = next;
+    }
+    return prev;
+}</code></pre>
+
+        <h3>c) Doubly Linked List</h3>
+        <pre><code>class DNode {
+    int data;
+    DNode prev, next;
+    DNode(int data) { this.data = data; }
+}
+
+class DoublyLinkedList {
+    DNode head;
+
+    void insert(int data) {
+        DNode newNode = new DNode(data);
+        if (head == null) head = newNode;
+        else {
+            DNode temp = head;
+            while (temp.next != null) temp = temp.next;
+            temp.next = newNode;
+            newNode.prev = temp;
+        }
+    }
+}</code></pre>
+
+        <h3>d) Circular Linked List</h3>
+        <pre><code>class CircularLinkedList {
+    Node head = null, tail = null;
+
+    void insert(int data) {
+        Node newNode = new Node(data);
+        if (head == null) {
+            head = tail = newNode;
+            newNode.next = head;
+        } else {
+            tail.next = newNode;
+            tail = newNode;
+            tail.next = head;
+        }
+    }
+}</code></pre>
+
+        <h3>e) Deletion by Value</h3>
+        <pre><code>void deleteByValue(int value) {
+    if (head == null) return;
+    if (head.data == value) {
+        head = head.next;
+        return;
+    }
+
+    Node temp = head;
+    while (temp.next != null && temp.next.data != value) {
+        temp = temp.next;
+    }
+
+    if (temp.next != null) {
+        temp.next = temp.next.next;
+    }
+}</code></pre>
+    </section>
+</body>
+</html>

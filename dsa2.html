@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Java Data Structures Guide</title>
+  <style>
+    :root {
+      --primary-color: #3498db;
+      --secondary-color: #2c3e50;
+      --accent-color: #e74c3c;
+      --light-bg: #f5f7fa;
+      --code-bg: #282c34;
+      --white: #ffffff;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      background-color: var(--light-bg);
+    }
+    
+    header {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: var(--white);
+      padding: 2rem;
+      border-radius: 8px;
+      margin: 2rem 0;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+    
+    h2 {
+      color: var(--secondary-color);
+      border-bottom: 3px solid var(--primary-color);
+      padding-bottom: 10px;
+      margin-top: 40px;
+    }
+    
+    h3 {
+      color: var(--primary-color);
+      margin-top: 25px;
+    }
+    
+    .card {
+      background-color: var(--white);
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    pre {
+      background-color: var(--code-bg);
+      color: var(--white);
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+      font-family: 'Consolas', 'Courier New', monospace;
+      margin: 15px 0;
+    }
+    
+    code {
+      font-family: 'Consolas', 'Courier New', monospace;
+    }
+    
+    .implementation-list {
+      list-style-type: none;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+    
+    .implementation-item {
+      background-color: var(--primary-color);
+      color: var(--white);
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    
+    .implementation-item:hover {
+      background-color: var(--secondary-color);
+    }
+    
+    .method {
+      background-color: rgba(52, 152, 219, 0.1);
+      border-left: 4px solid var(--primary-color);
+      padding: 10px;
+      margin: 10px 0;
+    }
+    
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      padding: 20px;
+      color: var(--secondary-color);
+      font-size: 0.9rem;
+    }
+    
+    @media (max-width: 768px) {
+      body {
+        padding: 0 10px;
+      }
+      
+      header {
+        padding: 1.5rem;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Java Data Structures Guide</h1>
+    <p>A comprehensive look at common data structures implemented in Java</p>
+  </header>
+  
+  <main>
+    <!-- Stacks Section -->
+    <section id="stacks">
+      <h2>4. Stacks</h2>
+      <p>
+        A stack is a linear data structure that follows the Last In First Out (LIFO) principle.
+        The element inserted last is the first one to be removed.
+      </p>
+      
+      <div class="card">
+        <h3>a) Stack using Array</h3>
+        <pre><code>class ArrayStack {
+    int top = -1;
+    int[] stack = new int[100];
+
+    void push(int x) {
+        if (top < 99) stack[++top] = x;
+    }
+
+    int pop() {
+        if (top >= 0) return stack[top--];
+        throw new EmptyStackException();
+    }
+
+    int peek() {
+        if (top >= 0) return stack[top];
+        throw new EmptyStackException();
+    }
+}</code></pre>
+      </div>
+      
+      <div class="card">
+        <h3>b) Stack using Linked List</h3>
+        <pre><code>class StackNode {
+    int data;
+    StackNode next;
+    StackNode(int data) { this.data = data; }
+}
+
+class LinkedListStack {
+    StackNode top;
+
+    void push(int x) {
+        StackNode node = new StackNode(x);
+        node.next = top;
+        top = node;
+    }
+
+    int pop() {
+        if (top == null) throw new EmptyStackException();
+        int res = top.data;
+        top = top.next;
+        return res;
+    }
+
+    int peek() {
+        if (top == null) throw new EmptyStackException();
+        return top.data;
+    }
+}</code></pre>
+      </div>
+      
+      <div class="card">
+        <h3>c) Expression Evaluation (Infix to Postfix + Evaluation)</h3>
+        <pre><code>public int evaluatePostfix(String expr) {
+    Stack<Integer> stack = new Stack<>();
+    for (char ch : expr.toCharArray()) {
+        if (Character.isDigit(ch)) {
+            stack.push(ch - '0');
+        } else {
+            int b = stack.pop();
+            int a = stack.pop();
+            switch (ch) {
+                case '+': stack.push(a + b); break;
+                case '-': stack.push(a - b); break;
+                case '*': stack.push(a * b); break;
+                case '/': stack.push(a / b); break;
+            }
+        }
+    }
+    return stack.pop();
+}</code></pre>
+      </div>
+      
+      <div class="card">
+        <h3>d) Backtracking Example: Balanced Parentheses</h3>
+        <pre><code>public boolean isValid(String s) {
+    Stack<Character> stack = new Stack<>();
+    for (char c : s.toCharArray()) {
+        if (c == '(' || c == '[' || c == '{') stack.push(c);
+        else {
+            if (stack.isEmpty()) return false;
+            char top = stack.pop();
+            if ((c == ')' && top != '(') ||
+                (c == ']' && top != '[') ||
+                (c == '}' && top != '{'))
+                return false;
+        }
+    }
+    return stack.isEmpty();
+}</code></pre>
+      </div>
+    </section>
+    
+    <!-- Queues Section -->
+    <section id="queues">
+      <h2>5. Queues</h2>
+      <p>
+        A queue is a linear data structure that follows the First In First Out (FIFO) principle.
+        The element inserted first is the first one to be removed.
+      </p>
+      
+      <div class="card">
+        <h3>a) Queue using Array (Simple Implementation)</h3>
+        <pre><code>class ArrayQueue {
+    int[] queue = new int[100];
+    int front = 0, rear = 0;
+
+    void enqueue(int x) {
+        queue[rear++] = x;
+    }
+
+    int dequeue() {
+        if (front == rear) throw new RuntimeException("Queue is empty");
+        return queue[front++];
+    }
+
+    boolean isEmpty() {
+        return front == rear;
+    }
+}</code></pre>
+      </div>
+      
+      <div class="card">
+        <h3>b) Queue using Linked List</h3>
+        <pre><code>class QNode {
+    int data;
+    QNode next;
+    QNode(int data) { this.data = data; }
+}
+
+class LinkedListQueue {
+    QNode front, rear;
+
+    void enqueue(int x) {
+        QNode node = new QNode(x);
+        if (rear == null) {
+            front = rear = node;
+        } else {
+            rear.next = node;
+            rear = node;
+        }
+    }
+
+    int dequeue() {
+        if (front == null) throw new RuntimeException("Queue is empty");
+        int val = front.data;
+        front = front.next;
+        if (front == null) rear = null;
+        return val;
+    }
+}</code></pre>
+      </div>
+      
+      <div class="card">
+        <h3>c) Circular Queue</h3>
+        <pre><code>class CircularQueue {
+    int[] queue;
+    int front, rear, size;
+
+    CircularQueue(int k) {
+        queue = new int[k];
+        front = rear = -1;
+        size = k;
+    }
+
+    boolean enqueue(int val) {
+        if ((rear + 1) % size == front) return false;
+        if (front == -1) front = 0;
+        rear = (rear + 1) % size;
+        queue[rear] = val;
+        return true;
+    }
+
+    int dequeue() {
+        if (front == -1) throw new RuntimeException("Empty");
+        int val = queue[front];
+        if (front == rear) front = rear = -1;
+        else front = (front + 1) % size;
+        return val;
+    }
+}</code></pre>
+      </div>
+      
+      <div class="card">
+        <h3>d) Priority Queue (Using Java's Built-in Class)</h3>
+        <pre><code>PriorityQueue<Integer> pq = new PriorityQueue<>();
+pq.add(10);
+pq.add(5);
+pq.add(20);
+System.out.println(pq.poll()); // 5 (min by default)</code></pre>
+      </div>
+      
+      <div class="card">
+        <h3>e) Deque (Double-Ended Queue)</h3>
+        <pre><code>Deque<Integer> deque = new ArrayDeque<>();
+deque.addFirst(10);
+deque.addLast(20);
+System.out.println(deque.removeFirst()); // 10
+System.out.println(deque.removeLast());  // 20</code></pre>
+      </div>
+    </section>
+    
+    <!-- Hashing Section -->
+    <section id="hashing">
+      <h2>6. Hashing</h2>
+      <p>
+        Hashing is a technique that is used to uniquely identify a specific object from a group of similar objects.
+      </p>
+      
+      <div class="card">
+        <h3>a) Hash Table using HashMap</h3>
+        <pre><code>import java.util.*;
+
+Map<String, Integer> map = new HashMap<>();
+map.put("apple", 2);
+map.put("banana", 5);
+
+System.out.println(map.get("banana"));  // Output: 5</code></pre>
+      </div>
+      
+      <div class="card">
+        <h3>b) Collision Resolution (Chaining using Buckets)</h3>
+        <pre><code>class HashTable {
+    private LinkedList<Pair>[] buckets;
+
+    public HashTable(int size) {
+        buckets = new LinkedList[size];
+        for (int i = 0; i < size; i++) buckets[i] = new LinkedList<>();
+    }
+
+    private int hash(String key) {
+        return Math.abs(key.hashCode()) % buckets.length;
+    }
+
+    public void put(String key, int value) {
+        int index = hash(key);
+        for (Pair p : buckets[index]) {
+            if (p.key.equals(key)) {
+                p.value = value;
+                return;
+            }
+        }
+        buckets[index].add(new Pair(key, value));
+    }
+
+    public Integer get(String key) {
+        int index = hash(key);
+        for (Pair p : buckets[index]) {
+            if (p.key.equals(key)) return p.value;
+        }
+        return null;
+    }
+
+    static class Pair {
+        String key;
+        int value;
+        Pair(String k, int v) { key = k; value = v; }
+    }
+}</code></pre>
+      </div>
+      
+      <div class="card">
+        <h3>c) Application: Check if Two Strings are Anagrams</h3>
+        <pre><code>public boolean areAnagrams(String s1, String s2) {
+    if (s1.length() != s2.length()) return false;
+    int[] count = new int[26];
+    for (char c : s1.toCharArray()) count[c - 'a']++;
+    for (char c : s2.toCharArray()) {
+        if (--count[c - 'a'] < 0) return false;
+    }
+    return true;
+}</code></pre>
+      </div>
+      
+      <div class="card">
+        <h3>d) Frequency Count of Elements</h3>
+        <pre><code>public void frequencyCount(int[] arr) {
+    Map<Integer, Integer> freqMap = new HashMap<>();
+    for (int num : arr) {
+        freqMap.put(num, freqMap.getOrDefault(num, 0) + 1);
+    }
+    for (Map.Entry<Integer, Integer> entry : freqMap.entrySet()) {
+        System.out.println(entry.getKey() + " -> " + entry.getValue());
+    }
+}</code></pre>
+      </div>
+    </section>
+  </main>
+  
+  <footer>
+    <p>Java Data Structures Guide © 2025</p>
+  </footer>
+</body>
+</html>

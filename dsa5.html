@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algorithm Examples</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h2 {
+            background-color: #3498db;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 30px;
+        }
+        h3 {
+            color: #2980b9;
+            margin-top: 20px;
+        }
+        .algorithm {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .code-container {
+            background-color: #f5f5f5;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        .description {
+            margin-bottom: 15px;
+        }
+        .nav {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        .nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #3498db;
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .nav a:hover {
+            background-color: #e1f0fa;
+        }
+    </style>
+</head>
+<body>
+    <h1>Algorithm Examples</h1>
+    
+    <div class="nav">
+        <a href="#backtracking">Backtracking</a>
+        <a href="#greedy">Greedy Algorithms</a>
+        <a href="#bit">Bit Manipulation</a>
+    </div>
+
+    <div id="backtracking">
+        <h2>12. Backtracking – Java Examples</h2>
+        
+        <div class="algorithm">
+            <h3>a) N-Queens Problem</h3>
+            <div class="description">
+                <p>The N-Queens problem is about placing N queens on an NxN chessboard such that no two queens threaten each other. You need to place one queen in each row, and they must not share the same column, row, or diagonal.</p>
+            </div>
+            <div class="code-container">
+                <pre>
+boolean isSafe(int[][] board, int row, int col, int N) {
+    // Check column
+    for (int i = 0; i < row; i++) {
+        if (board[i][col] == 1) return false;
+    }
+    // Check diagonal (upper left)
+    for (int i = row, j = col; i >= 0 && j >= 0; i--, j--) {
+        if (board[i][j] == 1) return false;
+    }
+    // Check diagonal (upper right)
+    for (int i = row, j = col; i >= 0 && j < N; i--, j++) {
+        if (board[i][j] == 1) return false;
+    }
+    return true;
+}
+
+boolean solveNQueens(int[][] board, int row, int N) {
+    if (row >= N) return true;  // All queens are placed
+
+    for (int col = 0; col < N; col++) {
+        if (isSafe(board, row, col, N)) {
+            board[row][col] = 1;  // Place queen
+
+            if (solveNQueens(board, row + 1, N)) return true;  // Recur to place next queen
+
+            board[row][col] = 0;  // Backtrack
+        }
+    }
+    return false;  // No safe place found for queen in this row
+}
+
+void printSolution(int[][] board, int N) {
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < N; j++) {
+            System.out.print(board[i][j] + " ");
+        }
+        System.out.println();
+    }
+}</pre>
+            </div>
+        </div>
+
+        <div class="algorithm">
+            <h3>b) Sudoku Solver</h3>
+            <div class="description">
+                <p>The Sudoku Solver is a classic backtracking problem where you need to fill a partially filled 9x9 grid such that each row, column, and 3x3 subgrid contains all digits from 1 to 9.</p>
+            </div>
+            <div class="code-container">
+                <pre>
+boolean isSafe(int[][] board, int row, int col, int num) {
+    // Check row
+    for (int x = 0; x < 9; x++) {
+        if (board[row][x] == num) return false;
+    }
+    // Check column
+    for (int x = 0; x < 9; x++) {
+        if (board[x][col] == num) return false;
+    }
+    // Check 3x3 subgrid
+    int startRow = row - row % 3, startCol = col - col % 3;
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            if (board[i + startRow][j + startCol] == num) return false;
+        }
+    }
+    return true;
+}
+
+boolean solveSudoku(int[][] board) {
+    int row = -1, col = -1;
+    boolean empty = true;
+    
+    for (int i = 0; i < 9; i++) {
+        for (int j = 0; j < 9; j++) {
+            if (board[i][j] == 0) {
+                row = i;
+                col = j;
+                empty = false;
+                break;
+            }
+        }
+        if (!empty) break;
+    }
+
+    if (empty) return true;  // Sudoku is solved
+
+    for (int num = 1; num <= 9; num++) {
+        if (isSafe(board, row, col, num)) {
+            board[row][col] = num;
+            if (solveSudoku(board)) return true;
+            board[row][col] = 0;  // Backtrack
+        }
+    }
+    return false;
+}</pre>
+            </div>
+        </div>
+
+        <div class="algorithm">
+            <h3>c) Permutations and Combinations</h3>
+            <div class="description">
+                <p>Permutations are all possible orderings of a set of elements. Combinations are selections of elements where the order doesn't matter.</p>
+            </div>
+            <div class="code-container">
+                <pre>
+// Permutations of a string
+void permute(String str, int l, int r) {
+    if (l == r) {
+        System.out.println(str);
+    } else {
+        for (int i = l; i <= r; i++) {
+            str = swap(str, l, i);  // Swap
+            permute(str, l + 1, r);
+            str = swap(str, l, i);  // Backtrack
+        }
+    }
+}
+
+String swap(String a, int i, int j) {
+    char[] charArray = a.toCharArray();
+    char temp = charArray[i];
+    charArray[i] = charArray[j];
+    charArray[j] = temp;
+    return new String(charArray);
+}</pre>
+            </div>
+        </div>
+
+        <div class="algorithm">
+            <h3>d) Subset Generation</h3>
+            <div class="description">
+                <p>Subset generation is about generating all possible subsets (powerset) of a given set.</p>
+            </div>
+            <div class="code-container">
+                <pre>
+void generateSubsets(int[] nums, int index, List<Integer> current, List<List<Integer>> result) {
+    if (index == nums.length) {
+        result.add(new ArrayList<>(current));
+        return;
+    }
+    
+    // Include current element
+    current.add(nums[index]);
+    generateSubsets(nums, index + 1, current, result);
+    
+    // Exclude current element
+    current.remove(current.size() - 1);
+    generateSubsets(nums, index + 1, current, result);
+}
+
+List<List<Integer>> subsets(int[] nums) {
+    List<List<Integer>> result = new ArrayList<>();
+    generateSubsets(nums, 0, new ArrayList<>(), result);
+    return result;
+}</pre>
+            </div>
+        </div>
+    </div>
+
+    <div id="greedy">
+        <h2>13. Greedy Algorithms – Java Examples</h2>
+        
+        <div class="algorithm">
+            <h3>a) Activity Selection Problem</h3>
+            <div class="description">
+                <p>In the Activity Selection problem, you have a set of activities with start and finish times, and the goal is to select the maximum number of activities that don't overlap.</p>
+            </div>
+            <div class="code-container">
+                <pre>
+void activitySelection(int[] start, int[] finish, int n) {
+    int i = 0;  // The first activity is always selected
+    System.out.println("Selected activities: " + i);
+
+    for (int j = 1; j < n; j++) {
+        if (start[j] >= finish[i]) {  // If the current activity starts after the last selected activity ends
+            System.out.println("Selected activity: " + j);
+            i = j;
+        }
+    }
+}</pre>
+            </div>
+        </div>
+
+        <div class="algorithm">
+            <h3>b) Huffman Coding</h3>
+            <div class="description">
+                <p>Huffman coding is a popular method for data compression. It assigns variable-length codes to input characters, with shorter codes assigned to more frequent characters.</p>
+            </div>
+            <div class="code-container">
+                <pre>
+// A utility function to create a min-heap for Huffman coding
+class MinHeapNode {
+    char data;
+    int freq;
+    MinHeapNode left, right;
+
+    public MinHeapNode(char data, int freq) {
+        this.data = data;
+        this.freq = freq;
+        this.left = this.right = null;
+    }
+}
+
+class HuffmanCoding {
+    public void buildHuffmanTree(char[] data, int[] freq) {
+        PriorityQueue<MinHeapNode> minHeap = new PriorityQueue<>(Comparator.comparingInt(a -> a.freq));
+
+        for (int i = 0; i < data.length; i++) {
+            minHeap.add(new MinHeapNode(data[i], freq[i]));
+        }
+
+        while (minHeap.size() > 1) {
+            MinHeapNode left = minHeap.poll();
+            MinHeapNode right = minHeap.poll();
+
+            MinHeapNode newNode = new MinHeapNode('$', left.freq + right.freq);
+            newNode.left = left;
+            newNode.right = right;
+
+            minHeap.add(newNode);
+        }
+
+        MinHeapNode root = minHeap.poll();  // Root of the Huffman Tree
+        printHuffmanCodes(root, "");
+    }
+
+    private void printHuffmanCodes(MinHeapNode root, String str) {
+        if (root == null) return;
+
+        if (root.data != '$') {
+            System.out.println(root.data + ": " + str);
+        }
+
+        printHuffmanCodes(root.left, str + "0");
+        printHuffmanCodes(root.right, str + "1");
+    }
+}</pre>
+            </div>
+        </div>
+
+        <div class="algorithm">
+            <h3>c) Job Sequencing Problem</h3>
+            <div class="description">
+                <p>In the Job Sequencing problem, you are given jobs with deadlines and profits, and you need to schedule the jobs to maximize profit while respecting deadlines.</p>
+            </div>
+            <div class="code-container">
+                <pre>
+class Job {
+    int id, deadline, profit;
+
+    Job(int id, int deadline, int profit) {
+        this.id = id;
+        this.deadline = deadline;
+        this.profit = profit;
+    }
+}
+
+void jobSequencing(Job[] jobs, int n) {
+    Arrays.sort(jobs, (a, b) -> b.profit - a.profit);  // Sort jobs by profit in decreasing order
+
+    int[] result = new int[n];
+    boolean[] slot = new boolean[n];
+
+    for (int i = 0; i < n; i++) {
+        for (int j = Math.min(n, jobs[i].deadline) - 1; j >= 0; j--) {
+            if (!slot[j]) {
+                result[j] = jobs[i].id;
+                slot[j] = true;
+                break;
+            }
+        }
+    }
+
+    System.out.println("Job sequence: ");
+    for (int i = 0; i < n; i++) {
+        if (result[i] != 0) {
+            System.out.print(result[i] + " ");
+        }
+    }
+}</pre>
+            </div>
+        </div>
+
+        <div class="algorithm">
+            <h3>d) Minimum Spanning Tree (Kruskal's and Prim's)</h3>
+            <div class="description">
+                <p>Kruskal's algorithm is a greedy algorithm to find the minimum spanning tree (MST) of a graph. It sorts all edges in non-decreasing order of their weights and adds the edges one by one to the MST, ensuring no cycles are formed.</p>
+            </div>
+            <div class="code-container">
+                <pre>
+class DisjointSet {
+    int[] parent, rank;
+
+    DisjointSet(int n) {
+        parent = new int[n];
+        rank = new int[n];
+        for (int i = 0; i < n; i++) {
+            parent[i] = i;
+            rank[i] = 0;
+        }
+    }
+
+    int find(int u) {
+        if (u != parent[u]) {
+            parent[u] = find(parent[u]);  // Path compression
+        }
+        return parent[u];
+    }
+
+    void union(int u, int v) {
+        int rootU = find(u);
+        int rootV = find(v);
+
+        if (rootU != rootV) {
+            if (rank[rootU] > rank[rootV]) {
+                parent[rootV] = rootU;
+            } else if (rank[rootU] < rank[rootV]) {
+                parent[rootU] = rootV;
+            } else {
+                parent[rootV] = rootU;
+                rank[rootU]++;
+            }
+        }
+    }
+}
+
+class Kruskal {
+    void kruskalMST(int V, int[][] edges) {
+        Arrays.sort(edges, (a, b) -> a[2] - b[2]);  // Sort edges by weight
+
+        DisjointSet ds = new DisjointSet(V);
+        int mstWeight = 0;
+
+        for (int[] edge : edges) {
+            int u = edge[0], v = edge[1], weight = edge[2];
+            if (ds.find(u) != ds.find(v)) {
+                ds.union(u, v);
+                mstWeight += weight;
+                System.out.println("Edge: (" + u + ", " + v + ") Weight: " + weight);
+            }
+        }
+
+        System.out.println("Minimum spanning tree weight: " + mstWeight);
+    }
+}</pre>
+            </div>
+        </div>
+    </div>
+
+    <div id="bit">
+        <h2>14. Bit Manipulation – Java Examples</h2>
+        
+        <div class="algorithm">
+            <h3>a) Basic Bitwise Operations</h3>
+            <div class="description">
+                <p>AND (&): Returns 1 if both bits are 1.<br>
+                OR (|): Returns 1 if at least one bit is 1.<br>
+                XOR (^): Returns 1 if the bits are different.<br>
+                NOT (~): Inverts all the bits.</p>
+            </div>
+            <div class="code-container">
+                <pre>
+class BitwiseOperations {
+    public void performBitwiseOperations(int a, int b) {
+        System.out.println("a = " + a + " b = " + b);
+        System.out.println("a & b = " + (a & b));  // AND
+        System.out.println("a | b = " + (a | b));  // OR
+        System.out.println("a ^ b = " + (a ^ b));  // XOR
+        System.out.println("~a = " + (~a));        // NOT
+    }
+}</pre>
+            </div>
+        </div>
+
+        <div class="algorithm">
+            <h3>b) Bit Shifting</h3>
+            <div class="description">
+                <p>Left Shift (<<): Shifts bits to the left, multiplying the number by 2 for each shift.<br>
+                Right Shift (>>): Shifts bits to the right, dividing the number by 2 for each shift.<br>
+                Unsigned Right Shift (>>>): Shifts bits to the right, filling with 0 regardless of the sign.</p>
+            </div>
+            <div class="code-container">
+                <pre>
+class BitShifting {
+    public void performBitShifting(int num) {
+        System.out.println("Original: " + num);
+        System.out.println("Left shift by 1: " + (num << 1));  // Multiply by 2
+        System.out.println("Right shift by 1: " + (num >> 1)); // Divide by 2
+        System.out.println("Unsigned right shift by 1: " + (num >>> 1));
+    }
+}</pre>
+            </div>
+        </div>
+
+        <div class="algorithm">
+            <h3>c) Applications of Bit Manipulation</h3>
+            <div class="description">
+                <p>Finding Unique Elements<br>
+                Often, bit manipulation is used to find unique elements in an array where all other elements appear twice. This is done using XOR.</p>
+            </div>
+            <div class="code-container">
+                <pre>
+class UniqueElement {
+    public int findUnique(int[] arr) {
+        int result = 0;
+        for (int num : arr) {
+            result ^= num;  // XOR all elements
+        }
+        return result;  // The unique element will remain
+    }
+}</pre>
+            </div>
+            
+            <div class="description">
+                <p>Counting Set Bits<br>
+                You can count the number of 1 bits (set bits) in an integer using a bit manipulation trick.</p>
+            </div>
+            <div class="code-container">
+                <pre>
+class CountSetBits {
+    public int countSetBits(int n) {
+        int count = 0;
+        while (n > 0) {
+            count += (n & 1);  // Increment count if the last bit is 1
+            n >>= 1;  // Right shift to check the next bit
+        }
+        return count;
+    }
+}</pre>
+            </div>
+            
+            <div class="description">
+                <p>Finding the Only Power of Two<br>
+                A number is a power of two if it has exactly one 1 in its binary representation.</p>
+            </div>
+            <div class="code-container">
+                <pre>
+class PowerOfTwo {
+    public boolean isPowerOfTwo(int n) {
+        return (n > 0) && ((n & (n - 1)) == 0);
+    }
+}</pre>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

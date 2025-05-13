@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tree and Graph Algorithms</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h2 {
+            background-color: #3498db;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 30px;
+        }
+        h3 {
+            color: #2980b9;
+            margin-top: 20px;
+        }
+        .algorithm {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .code-container {
+            background-color: #f5f5f5;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        .description {
+            margin-bottom: 15px;
+        }
+        .nav {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        .nav a {
+            margin: 5px 10px;
+            text-decoration: none;
+            color: #3498db;
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .nav a:hover {
+            background-color: #e1f0fa;
+        }
+        .note {
+            background-color: #fffde7;
+            border-left: 4px solid #ffd600;
+            padding: 10px;
+            margin: 10px 0;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tree and Graph Algorithms</h1>
+    
+    <div class="nav">
+        <a href="#trees">Tree Algorithms</a>
+        <a href="#graphs">Graph Algorithms</a>
+    </div>
+
+    <div id="trees">
+        <h2>7. Trees - Java Examples</h2>
+        
+        <div class="algorithm">
+            <h3>a) Binary Tree + Traversals (Inorder)</h3>
+            <div class="description">
+                <p>Basic binary tree structure with inorder traversal (left-root-right).</p>
+            </div>
+            <div class="code-container">
+                <pre>
+class TreeNode {
+    int val;
+    TreeNode left, right;
+    TreeNode(int val) { this.val = val; }
+}
+
+void inorder(TreeNode root) {
+    if (root != null) {
+        inorder(root.left);
+        System.out.print(root.val + " ");
+        inorder(root.right);
+    }
+}</pre>
+            </div>
+        </div>
+
+        <div class="algorithm">
+            <h3>b) Binary Search Tree (BST) - Insertion</h3>
+            <div class="description">
+                <p>Insertion in a BST where left child is smaller and right child is larger than parent.</p>
+            </div>
+            <div class="code-container">
+                <pre>
+TreeNode insert(TreeNode root, int val) {
+    if (root == null) return new TreeNode(val);
+    if (val < root.val) root.left = insert(root.left, val);
+    else root.right = insert(root.right, val);
+    return root;
+}</pre>
+            </div>
+        </div>
+
+        <div class="algorithm">
+            <h3>c) AVL Tree (Self-Balancing BST - Basic Rotation)</h3>
+            <div class="description">
+                <p>AVL tree implementation with right rotation to maintain balance.</p>
+            </div>
+            <div class="code-container">
+                <pre>
+class AVLNode {
+    int val, height;
+    AVLNode left, right;
+    AVLNode(int val) { this.val = val; height = 1; }
+}
+
+int height(AVLNode n) {
+    return (n == null) ? 0 : n.height;
+}
+
+int getBalance(AVLNode n) {
+    return (n == null) ? 0 : height(n.left) - height(n.right);
+}
+
+AVLNode rightRotate(AVLNode y) {
+    AVLNode x = y.left;
+    AVLNode T2 = x.right;
+    x.right = y;
+    y.left = T2;
+    y.height = Math.max(height(y.left), height(y.right)) + 1;
+    x.height = Math.max(height(x.left), height(x.right)) + 1;
+    return x;
+}</pre>
+            </div>
+        </div>
+
+        <div class="algorithm">
+            <h3>d) Red-Black Tree</h3>
+            <div class="description">
+                <p>Java's built-in TreeMap and TreeSet use Red-Black trees internally.</p>
+            </div>
+            <div class="code-container">
+                <pre>
+TreeMap&lt;Integer, String> rbTree = new TreeMap<>();
+rbTree.put(10, "ten");
+rbTree.put(5, "five");
+System.out.println(rbTree); // Sorted automatically</pre>
+            </div>
+        </div>
+
+        <div class="algorithm">
+            <h3>e) Segment Tree (Range Sum Query)</h3>
+            <div class="description">
+                <p>Segment tree implementation for range sum queries.</p>
+            </div>
+            <div class="code-container">
+                <pre>
+class SegmentTree {
+    int[] seg;
+
+    SegmentTree(int[] arr) {
+        int n = arr.length;
+        seg = new int[4 * n];
+        build(arr, 0, 0, n - 1);
+    }
+
+    void build(int[] arr, int index, int low, int high) {
+        if (low == high) {
+            seg[index] = arr[low];
+            return;
+        }
+        int mid = (low + high) / 2;
+        build(arr, 2 * index + 1, low, mid);
+        build(arr, 2 * index + 2, mid + 1, high);
+        seg[index] = seg[2 * index + 1] + seg[2 * index + 2];
+    }
+}</pre>
+            </div>
+        </div>
+
+        <div class="algorithm">
+            <h3>f) Fenwick Tree (Binary Indexed Tree)</h3>
+            <div class="description">
+                <p>Fenwick tree for efficient prefix sum calculations.</p>
+            </div>
+            <div class="code-container">
+                <pre>
+class FenwickTree {
+    int[] bit;
+
+    FenwickTree(int n) {
+        bit = new int[n + 1];
+    }
+
+    void update(int i, int val) {
+        while (i < bit.length) {
+            bit[i] += val;
+            i += i & -i;
+        }
+    }
+
+    int query(int i) {
+        int sum = 0;
+        while (i > 0) {
+            sum += bit[i];
+            i -= i & -i;
+        }
+        return sum;
+    }
+}</pre>
+            </div>
+        </div>
+
+        <div class="algorithm">
+            <h3>g) Trie (Prefix Tree)</h3>
+            <div class="description">
+                <p>Trie implementation for efficient string storage and searching.</p>
+            </div>
+            <div class="code-container">
+                <pre>
+class TrieNode {
+    TrieNode[] children = new TrieNode[26];
+    boolean isEnd = false;
+}
+
+class Trie {
+    TrieNode root = new TrieNode();
+
+    void insert(String word) {
+        TrieNode node = root;
+        for (char c : word.toCharArray()) {
+            if (node.children[c - 'a'] == null)
+                node.children[c - 'a'] = new TrieNode();
+            node = node.children[c - 'a'];
+        }
+        node.isEnd = true;
+    }
+
+    boolean search(String word) {
+        TrieNode node = root;
+        for (char c : word.toCharArray()) {
+            if (node.children[c - 'a'] == null) return false;
+            node = node.children[c - 'a'];
+        }
+        return node.isEnd;
+    }
+}</pre>
+            </div>
+        </div>
+    </div>
+
+    <div id="graphs">
+        <h2>8. Graphs - Java Examples</h2>
+        
+        <div class="algorithm">
+            <h3>a) Adjacency List Representation</h3>
+            <div class="description">
+                <p>Basic graph representation using adjacency lists.</p>
+            </div>
+            <div class="code-container">
+                <pre>
+import java.util.*;
+
+class Graph {
+    int V;
+    List&lt;List&lt;Integer>> adj;
+
+    Graph(int V) {
+        this.V = V;
+        adj = new ArrayList<>();
+        for (int i = 0; i < V; i++)
+            adj.add(new ArrayList<>());
+    }
+
+    void addEdge(int u, int v) {
+        adj.get(u).add(v);
+        adj.get(v).add(u);  // for undirected graph
+    }
+}</pre>
+            </div>
+        </div>
+
+        <div class="algorithm">
+            <h3>b) DFS Traversal</h3>
+            <div class="description">
+                <p>Depth-First Search traversal of a graph.</p>
+            </div>
+            <div class="code-container">
+                <pre>
+void dfs(int node, boolean[] visited, List&lt;List&lt;Integer>> adj) {
+    visited[node] = true;
+    System.out.print(node + " ");
+    for (int neighbor : adj.get(node)) {
+        if (!visited[neighbor])
+            dfs(neighbor, visited, adj);
+    }
+}</pre>
+            </div>
+        </div>
+
+        <div class="algorithm">
+            <h3>c) BFS Traversal</h3>
+            <div class="description">
+                <p>Breadth-First Search traversal of a graph.</p>
+            </div>
+            <div class="code-container">
+                <pre>
+void bfs(int start, List&lt;List&lt;Integer>> adj) {
+    boolean[] visited = new boolean[adj.size()];
+    Queue&lt;Integer> q = new LinkedList<>();
+    q.add(start);
+    visited[start] = true;
+
+    while (!q.isEmpty()) {
+        int node = q.poll();
+        System.out.print(node + " ");
+        for (int neighbor : adj.get(node)) {
+            if (!visited[neighbor]) {
+                q.add(neighbor);
+                visited[neighbor] = true;
+            }
+        }
+    }
+}</pre>
+            </div>
+        </div>
+
+        <div class="algorithm">
+            <h3>d) Dijkstra's Algorithm</h3>
+            <div class="description">
+                <p>Finds shortest paths from a single source in graphs with non-negative edge weights.</p>
+            </div>
+            <div class="code-container">
+                <pre>
+class Pair implements Comparable&lt;Pair> {
+    int node, dist;
+    Pair(int n, int d) { node = n; dist = d; }
+
+    public int compareTo(Pair other) {
+        return this.dist - other.dist;
+    }
+}
+
+void dijkstra(int V, List&lt;List&lt;Pair>> adj, int src) {
+    int[] dist = new int[V];
+    Arrays.fill(dist, Integer.MAX_VALUE);
+    dist[src] = 0;
+
+    PriorityQueue&lt;Pair> pq = new PriorityQueue<>();
+    pq.add(new Pair(src, 0));
+
+    while (!pq.isEmpty()) {
+        Pair cur = pq.poll();
+        for (Pair p : adj.get(cur.node)) {
+            if (dist[cur.node] + p.dist < dist[p.node]) {
+                dist[p.node] = dist[cur.node] + p.dist;
+                pq.add(new Pair(p.node, dist[p.node]));
+            }
+        }
+    }
+
+    System.out.println(Arrays.toString(dist));
+}</pre>
+            </div>
+        </div>
+
+        <div class="algorithm">
+            <h3>e) Bellman-Ford Algorithm</h3>
+            <div class="description">
+                <p>Finds shortest paths from a single source in graphs that may contain negative edge weights.</p>
+            </div>
+            <div class="code-container">
+                <pre>
+void bellmanFord(int V, int[][] edges, int src) {
+    int[] dist = new int[V];
+    Arrays.fill(dist, Integer.MAX_VALUE);
+    dist[src] = 0;
+
+    for (int i = 1; i < V; i++) {
+        for (int[] edge : edges) {
+            int u = edge[0], v = edge[1], wt = edge[2];
+            if (dist[u] != Integer.MAX_VALUE && dist[u] + wt < dist[v])
+                dist[v] = dist[u] + wt;
+        }
+    }
+}</pre>
+            </div>
+        </div>
+
+        <div class="algorithm">
+            <h3>f) Floyd-Warshall Algorithm</h3>
+            <div class="description">
+                <p>Finds shortest paths between all pairs of vertices in a weighted graph.</p>
+            </div>
+            <div class="code-container">
+                <pre>
+void floydWarshall(int[][] dist, int V) {
+    for (int k = 0; k < V; k++)
+        for (int i = 0; i < V; i++)
+            for (int j = 0; j < V; j++)
+                if (dist[i][k] + dist[k][j] < dist[i][j])
+                    dist[i][j] = dist[i][k] + dist[k][j];
+}</pre>
+            </div>
+        </div>
+
+        <div class="algorithm">
+            <h3>g) Prim's Algorithm</h3>
+            <div class="description">
+                <p>Finds a minimum spanning tree for a weighted undirected graph.</p>
+            </div>
+            <div class="code-container">
+                <pre>
+void prims(int V, List&lt;List&lt;Pair>> adj) {
+    boolean[] visited = new boolean[V];
+    PriorityQueue&lt;Pair> pq = new PriorityQueue<>();
+    pq.add(new Pair(0, 0));
+    int mstCost = 0;
+
+    while (!pq.isEmpty()) {
+        Pair cur = pq.poll();
+        if (visited[cur.node]) continue;
+        visited[cur.node] = true;
+        mstCost += cur.dist;
+
+        for (Pair neighbor : adj.get(cur.node)) {
+            if (!visited[neighbor.node])
+                pq.add(neighbor);
+        }
+    }
+    System.out.println("MST cost: " + mstCost);
+}</pre>
+            </div>
+        </div>
+
+        <div class="algorithm">
+            <h3>h) Kruskal's Algorithm</h3>
+            <div class="description">
+                <p>Another approach to find minimum spanning tree using union-find data structure.</p>
+            </div>
+            <div class="code-container">
+                <pre>
+class Edge implements Comparable&lt;Edge> {
+    int u, v, wt;
+    Edge(int u, int v, int wt) { this.u = u; this.v = v; this.wt = wt; }
+
+    public int compareTo(Edge o) { return this.wt - o.wt; }
+}
+
+class DSU {
+    int[] parent;
+
+    DSU(int n) {
+        parent = new int[n];
+        for (int i = 0; i < n; i++) parent[i] = i;
+    }
+
+    int find(int x) {
+        if (x != parent[x])
+            parent[x] = find(parent[x]);
+        return parent[x];
+    }
+
+    void union(int x, int y) {
+        parent[find(x)] = find(y);
+    }
+}</pre>
+            </div>
+        </div>
+
+        <div class="algorithm">
+            <h3>i) Topological Sorting (Kahn's Algorithm)</h3>
+            <div class="description">
+                <p>Linear ordering of vertices in a directed acyclic graph (DAG).</p>
+            </div>
+            <div class="code-container">
+                <pre>
+void topoSort(int V, List&lt;List&lt;Integer>> adj) {
+    int[] indegree = new int[V];
+    for (List&lt;Integer> list : adj)
+        for (int v : list) indegree[v]++;
+
+    Queue&lt;Integer> q = new LinkedList<>();
+    for (int i = 0; i < V; i++)
+        if (indegree[i] == 0) q.add(i);
+
+    while (!q.isEmpty()) {
+        int node = q.poll();
+        System.out.print(node + " ");
+        for (int neighbor : adj.get(node))
+            if (--indegree[neighbor] == 0)
+                q.add(neighbor);
+    }
+}</pre>
+            </div>
+        </div>
+
+        <div class="algorithm">
+            <h3>j) Strongly Connected Components (Kosaraju's Algorithm - Idea)</h3>
+            <div class="description">
+                <p>Finds strongly connected components in a directed graph.</p>
+            </div>
+            <div class="note">
+                <p>Step 1: Do DFS and fill stack by finish time</p>
+                <p>Step 2: Transpose graph</p>
+                <p>Step 3: DFS from stack nodes to get SCCs</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
